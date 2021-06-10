@@ -1,7 +1,7 @@
 
 ## Niche Modeling for Ornithodoros ticks in Argentina
 
-![]("Images/Ornithodoros.jpg")
+![](Images/Ornithodoros.jpg)
 
 >**Luciano F. La Sala**, Instituto de Ciencias Biológicas y Biomédicas del Sur (CONICET-UNS), Bahía Blanca, Argentina.  
 **Julián M. Burgos**, Marine and Freshwater Research Institute, Iceland.  
