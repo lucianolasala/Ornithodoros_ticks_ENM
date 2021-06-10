@@ -21,7 +21,9 @@ A Maximum Entropy approach (https://biodiversityinformatics.amnh.org/open_source
 Table of Contents
 ----------
 
-[1. Remote sensing and climate data](./GEE-raster-processing/README.md)  
+[1. Remote sensing and climate data](./GEE-raster-processing/README.md) 
+
+[2. Calibration and projection areas](./GEE-raster-processing/README.md)
 
 [2. Environmental data processing](./Environmental_data.md)
 
