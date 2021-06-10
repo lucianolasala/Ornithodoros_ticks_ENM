@@ -1,8 +1,6 @@
 
 ## Niche Modeling for Ornithodoros ticks in Argentina
 
-<img src="https://user-images.githubusercontent.com/20196847/82152923-d78ba600-983a-11ea-9bfc-2a9115a029f5.jpg" height="100" width="100" img align="right">
-
 ![Ornithodoros](https://user-images.githubusercontent.com/20196847/121586179-ba0f1880-ca09-11eb-9a69-e4f534fafc6b.jpg)
 <img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/20196847/121586179-ba0f1880-ca09-11eb-9a69-e4f534fafc6b.jpg">
 
