@@ -1,7 +1,7 @@
 
 ## Niche Modeling for Ornithodoros ticks in Argentina
 
-<img src="https://github.com/lucianolasala/Ornithodoros_ticks_ENM/issues/1#issuecomment-858966641" height="100" width="100" img align="right">
+![Tick] (https://github.com/lucianolasala/Ornithodoros_ticks_ENM/issues/1#issuecomment-858966641) 
 
 
 >**Luciano F. La Sala**, Instituto de Ciencias Biológicas y Biomédicas del Sur (CONICET-UNS), Bahía Blanca, Argentina.  
