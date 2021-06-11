@@ -23,7 +23,7 @@ Table of Contents
 
 [1. Remote sensing and climate data](./GEE-raster-processing/README.md) 
 
-[2. Calibration and projection areas](./Calibration-and-projection-areas/README.md)
+[2. Calibration and projection areas](./Calibration_projection_areas/README.md)
 
 [4. Environmental data processing](./Environmental_data.md)
 
