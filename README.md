@@ -6,9 +6,9 @@
 <img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/20196847/121600383-c3ed4780-ca1a-11eb-812c-e30c7c034790.png">
 
 
->**Luciano F. La Sala**, Instituto de Ciencias Biológicas y Biomédicas del Sur (CONICET-UNS), Bahía Blanca, Argentina.  
-**Julián M. Burgos**, Marine and Freshwater Research Institute, Iceland.  
-
+>**Luciano F. La Sala**, Instituto de Ciencias Biológicas y Biomédicas del Sur (CONICET-UNS), Bahía Blanca, Argentina
+**Julián M. Burgos**, Marine and Freshwater Research Institute, Iceland
+**M. Jimena Marfil**, Facultad de Ciencias Veterinarias, Universidad de Buenos Aires 
 
 Introduction
 ----------  
