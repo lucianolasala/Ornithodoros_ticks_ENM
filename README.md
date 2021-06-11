@@ -30,7 +30,7 @@ Table of Contents
 
 [5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
-[6. Model calibration](./calibration/calibration.md)
+[6. Model calibration](./Model_calibration/README.md)
 
 [5. Model validation](./Validation/README.md)
 
