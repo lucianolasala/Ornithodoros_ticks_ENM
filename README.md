@@ -30,6 +30,10 @@ Table of Contents
 
 [5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
+
+### Model building
+In this section, we describe ...
+
 [6. Model calibration](./Model_calibration/README.md)
 
 [5. Model validation](./Validation/README.md)
