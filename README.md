@@ -19,7 +19,7 @@ The code included in the repository is divided into a series of separate scripts
 A Maximum Entropy approach (https://biodiversityinformatics.amnh.org/open_source/maxent/) method was used inside the R programing environment (https://www.r-project.org/).   
 
 
-Table of Contents
+## Table of Contents
 ----------
 
 [1. Remote sensing and climate data](./GEE-raster-processing/README.md) 
