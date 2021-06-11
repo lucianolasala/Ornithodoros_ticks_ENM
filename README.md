@@ -23,17 +23,16 @@ Table of Contents
 
 [1. Remote sensing and climate data](./GEE-raster-processing/README.md) 
 
-<<<<<<< HEAD
 [2. Calibration and projection areas](./Calibration-and-projection-areas/README.md)
-=======
-[2. Calibration and projection areas](./Calibration-and-projection-areas/Calibration-and-projection-areas.R)
->>>>>>> a67927432676246ffaba1e57f6c29875437680ae
 
-[3. Environmental data processing](./Environmental_data.md)
+[3. Calibration and projection areas](./Calibration-and-projection-areas/Calibration-and-projection-areas.R)
 
-[4. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
-[4. Model calibration](./calibration/calibration.md)
+[4. Environmental data processing](./Environmental_data.md)
+
+[5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
+
+[6. Model calibration](./calibration/calibration.md)
 
 [5. Model validation](./Validation/README.md)
 
