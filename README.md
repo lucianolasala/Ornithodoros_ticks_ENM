@@ -25,9 +25,6 @@ Table of Contents
 
 [2. Calibration and projection areas](./Calibration-and-projection-areas/README.md)
 
-[3. Calibration and projection areas](./Calibration-and-projection-areas/Calibration-and-projection-areas.R)
-
-
 [4. Environmental data processing](./Environmental_data.md)
 
 [5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
