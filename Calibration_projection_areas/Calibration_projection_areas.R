@@ -79,11 +79,16 @@ head(turicata)
 # Extracting ecoregions for O. turicata
 #------------------------------------------------------------------------------------
 
-turicata_df <- as.data.frame(sf::st_coordinates(turicata))  
+turicata1 <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
+class(turicata1)  # Loads as tibble
+
+turicata2 <- st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
+class(turicata2)  # Loads as sf dataframe
+
+turicata_df <- as.data.frame(sf::st_coordinates(turicata1))  
 colnames(turicata_df) <- c("Long", "Lat")
 head(turicata_df)
 length(turicata_df$Long)
-
 
 #------------------------------------------------------------------------------------
 # Load ecorregions of the world
@@ -101,19 +106,20 @@ str(eco_world)
 # Create a points collection
 
 turicata_sf <- do.call("st_sfc", c(lapply(1:nrow(turicata_df), 
-                                     function(i) {st_point(as.numeric(turicata_df[i, ]))}), list("crs" = 4326))) 
+                       function(i) {st_point(as.numeric(turicata_df[i, ]))}), list("crs" = 4326))) 
 
 turicata_trans <- st_transform(turicata_sf, 4326) # Apply transformation to pnts sf
 eco_trans <- st_transform(eco_world, 4326)        # Apply transformation to polygons sf
 
 # Intersect and extract ecoregion name
+
 turicata_df$Ecoregion <- apply(st_intersects(eco_trans, turicata_trans, sparse = FALSE), 2, 
-                     function(col) { 
-                       eco_trans[which(col), ]$ECO_NAME
-                     })
+                         function(col) { 
+                         eco_trans[which(col), ]$ECO_NAME
+                         })
 turicata_df
 class(turicata_df)
-length(turicata_df$Ecoregion)  # 138
+length(turicata_df$Ecoregion)  # 141
 
 # Subset unique ecorregion names
 
@@ -123,11 +129,11 @@ class(unique_eco)
 
 # Save as csv
 
-write.csv(unique_eco, file = "./Vector data/Ecoregions/Unique_ecoregions_turicata.csv")
+write.csv(unique_eco, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/Unique_ecoregions_turicata.csv")
 
-# Load ecoregions saves as csv
+# Load ecoregions saved as csv
 
-unique_eco <- read.csv(file = "./Shapefiles/Unique_eco_turicata.csv", sep = ",")
+unique_eco <- read.csv(file = "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/Unique_ecoregions_turicata.csv", sep = ",")
 unique_eco
 
 unique_eco_map <- eco_world[eco_world$ECO_NAME %in% unique_eco$Ecoregion, ]
@@ -135,12 +141,17 @@ class(unique_eco_map)
 str(unique_eco_map)
 unique_eco_map$ECO_NAME
 
+st_write(unique_eco_map, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions.gpkg", driver = "gpkg")
 
-st_write(unique_eco_map, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions.shp", driver = "ESRI Shapefile")
-
+#-------------------------------------------------------------------------
 # Disolve ecoregions for O. turicata
+#-------------------------------------------------------------------------
 
-turicata_dis <- readOGR("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions.shp")
+turicata_dis <- readOGR("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions.gpkg")
+
+turicata_dis <- st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions.gpkg")
+class(turicata_dis)
+
 
 turicata_dissolved <- rgeos::gUnaryUnion(turicata_dis)   # fc in rgeos pkg
 class(turicata_dissolved)  # Need to convert SpatialPolygon to SpatialPolygonsDataFrame
@@ -149,9 +160,17 @@ turicata_dissolved <- as(turicata_dissolved, "SpatialPolygonsDataFrame")
 class(turicata_dissolved)
 plot(turicata_dissolved)
 
+turicata_sf = st_as_sf(turicata_dissolved)      
+class(turicata_sf)
+class(turicata_sf)
+
+st_write(turicata_sf, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_dissolved.gpkg", driver = "gpkg")
+
 writeOGR(turicata_dissolved, layer = "turicata_dissolved", "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_dissolved.shp", driver = "ESRI Shapefile")
 
+#-------------------------------------------------------------------------
 # Plot occurrences
+#-------------------------------------------------------------------------
 
 turicata_dissolved %<>% 
   st_as_sf(coords = c("Long", "Lat")) %>% 
@@ -167,7 +186,7 @@ turicata %<>%
     st_as_sf(coords = c("Long","Lat")) %<>%
     st_sf(crs = 4326)
 
-p = ggplot() + # Create a ggplot object
+p = ggplot() +   # Create a ggplot object
     geom_sf(data = turicata_dissolved) +
     geom_sf(data = turicata, color = "blue", size = 1.5)
     
