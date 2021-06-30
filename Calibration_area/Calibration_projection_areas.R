@@ -189,7 +189,74 @@ turicata %<>%
 p = ggplot() +   # Create a ggplot object
     geom_sf(data = turicata_dissolved) +
     geom_sf(data = turicata, color = "blue", size = 1.5)
-    
-
 p
+
+#-------------------------------------------------------------------------
+# Crop M across all variables
+#-------------------------------------------------------------------------
+
+rm(list=ls(all=TRUE))
+
+setwd("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\WorldClim Bioclimatic variables_wc2.1_5m_bio")
+
+files <- list.files(pattern = ".tif$", all.files = TRUE, full.names = TRUE)
+length(files)  # 19
+
+allrasters <- stack(files)  # Create raster stack
+class(allrasters)
+
+# Load ecorregions polygon
+
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_dissolved.gpkg")
+
+# Crop raster stack with 19 variables using the vector
+
+bioclim_crop <- crop(allrasters, cal_area)
+str(bioclim_crop)
+class(bioclim_crop)
+
+plot(bioclim_crop[[1:4]])
+
+individual_r <- unstack(allrasters)
+class(individual_r)  # list
+
+individual_r[[1]]
+
+
+outfiles <- file.path("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\M", 
+                      paste0(basename(tools::file_path_sans_ext(files)),
+                      "_M.tif"))
+
+for(i in seq_along(files)) {
+  r <- mask(raster(files[i]), cal_area)
+  writeRaster(r, filename = outfiles[i], overwrite = TRUE)
+}
+
+
+#------------------------------------------------------------------------
+# Check spatial resolution and raster extent for M layers
+#------------------------------------------------------------------------
+
+setwd("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\M")
+
+files = list.files(pattern = ".tif$", all.files = TRUE, full.names = FALSE)
+files
+class(files)
+
+# Verify resolution and extent of rasters
+
+mytable <- NULL
+
+for(i in 1:19){
+  r <- raster(files[i])
+  mytable <- rbind(mytable, c(files[i], round(c(res(r), as.vector(extent(r))), 8)))
+}
+
+colnames(mytable) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
+mytable
+
+write.csv(mytable, file = "Raster properties.csv")
+xlsx::write.xlsx(mytable, file = "./Raster_properties.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+
 
