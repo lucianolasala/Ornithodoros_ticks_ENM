@@ -32,8 +32,7 @@ library("raster")
 setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
 ```
 
-
-###*O. turicata* occurrences
+*O. turicata* occurrences
 
 ```r
 Ornithodoros <- read_csv("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/Ornithodoros_DB.csv")  # readr::rerad_csv function imports data into R as a tibble
@@ -81,9 +80,9 @@ is.data.frame(turicata_df)  # Check that it's a dataframe
 head(turicata_df)  # Display first records. It says: Simple feature collection with 6 features (rows) and 14 fields (columns)
 ```
 
-###Extracting ecoregions for O. turicata
+Extracting ecoregions for O. turicata
 
-
+```r
 rm(list=ls(all=TRUE))
 
 turicata1 <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
@@ -103,10 +102,9 @@ head(turicata_df)
 colnames(turicata_df) <- c("Long", "Lat")  # Name columns Long and Lat
 head(turicata_df)
 length(turicata_df$Long)
+```
 
-#------------------------------------------------------------------------------------
-# Load ecorregions of the world
-#------------------------------------------------------------------------------------
+#### Load ecorregions of the world
 
 # st_read reads shapefile with ecoregions of the world and transforms into simple feature data frame 
 
