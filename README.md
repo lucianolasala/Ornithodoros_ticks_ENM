@@ -22,7 +22,7 @@ Table of Contents
 ----------
 *Ornithodoros turicata*
 
-[1. Environmental variabless](./O_turicata/Environmental-variables/README.md) 
+[1. Environmental variables](./O_turicata/Environmental_variables/README.md) 
 
 [2. Calibration and projection areas](./Calibration_projection_areas/README.md)
 
