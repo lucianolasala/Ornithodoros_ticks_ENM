@@ -32,7 +32,7 @@ library("raster")
 setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
 ```
 
-*O. turicata* occurrences
+#### *O. turicata* occurrences
 
 ```r
 Ornithodoros <- read_csv("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/Ornithodoros_DB.csv")  # readr::rerad_csv function imports data into R as a tibble
@@ -80,7 +80,7 @@ is.data.frame(turicata_df)  # Check that it's a dataframe
 head(turicata_df)  # Display first records. It says: Simple feature collection with 6 features (rows) and 14 fields (columns)
 ```
 
-Extracting ecoregions for O. turicata
+#### Extracting ecoregions for *O. turicata*
 
 ```r
 rm(list=ls(all=TRUE))
