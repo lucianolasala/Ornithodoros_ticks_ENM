@@ -22,7 +22,7 @@ Table of Contents
 ----------
 *Ornithodoros turicata*
 
-[1. Remote sensing and climate data](./O_turicata/Remote_sensinf_&_calimate_data/README.md) 
+[1. Remote sensing and climate data](./O_turicata/Remote_sensing_&_calimate_data/README.md) 
 
 [2. Calibration and projection areas](./Calibration_projection_areas/README.md)
 
