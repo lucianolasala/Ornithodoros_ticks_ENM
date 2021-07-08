@@ -32,7 +32,7 @@ library("raster")
 setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
 ```
 
-----------
+
 ###*O. turicata* occurrences
 
 ```r
