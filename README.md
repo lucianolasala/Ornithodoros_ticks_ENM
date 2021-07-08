@@ -37,3 +37,17 @@ Table of Contents
 [7. Suitability maps](./plots)
 
 *Ornithodoros coriaceus*
+
+[1. Environmental variables](./O_turicata/Environmental_variables/README.md) 
+
+[2. Calibration and projection areas](./Calibration_projection_areas/README.md)
+
+[3. Environmental data processing](./Environmental_data.md)
+
+[4. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
+
+[5. Model calibration](./Model_calibration/README.md)
+
+[6. Model validation](./Validation/README.md)
+
+[7. Suitability maps](./plots)
