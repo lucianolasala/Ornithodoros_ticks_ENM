@@ -7,13 +7,6 @@
 
 rm(list=ls(all=TRUE))
 
-install.packages("devtools")
-
-## kuenm
-devtools::install_github("marlonecobos/kuenm")
-
-rm(list=ls(all=TRUE))
-
 if(!require(tidyverse)){
   install.packages("tidyverse")
 }
@@ -35,8 +28,9 @@ library("sf")
 library("tidyverse")
 library("raster")
 
-setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
+# Set working dir
 
+setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
 
 #------------------------------------------------------------------------------------
 # O. turicata occurrences
