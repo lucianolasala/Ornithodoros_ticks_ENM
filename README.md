@@ -32,9 +32,13 @@ Table of Contents
 
 [5. Model calibration](./Model_calibration/README.md)
 
-[6. Model validation](./Validation/README.md)
+[6. Model evaluation](./Model_calibration/README.md)
 
-[7. Suitability maps](./plots)
+[7. Model projection](./Model_calibration/README.md)
+
+[8. Model validation](./Validation/README.md)
+
+[9. Suitability maps](./plots)
 
 *Ornithodoros coriaceus*
 
@@ -48,6 +52,10 @@ Table of Contents
 
 [5. Model calibration](./Model_calibration/README.md)
 
-[6. Model validation](./Validation/README.md)
+[6. Model evaluation](./Model_calibration/README.md)
 
-[7. Suitability maps](./plots)
+[7. Model projection](./Model_calibration/README.md)
+
+[8. Model validation](./Validation/README.md)
+
+[9. Suitability maps](./plots)
