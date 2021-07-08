@@ -36,4 +36,4 @@ Table of Contents
 
 [7. Suitability maps](./plots)
 
-
+*Ornithodoros coriaceus*
