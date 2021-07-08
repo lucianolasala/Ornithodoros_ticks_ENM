@@ -26,18 +26,14 @@ Table of Contents
 
 [2. Calibration and projection areas](./Calibration_projection_areas/README.md)
 
-[4. Environmental data processing](./Environmental_data.md)
+[3. Environmental data processing](./Environmental_data.md)
 
-[5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
+[4. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
+[5. Model calibration](./Model_calibration/README.md)
 
-### Model building
-In this section, we describe ...
+[6. Model validation](./Validation/README.md)
 
-[6. Model calibration](./Model_calibration/README.md)
-
-[5. Model validation](./Validation/README.md)
-
-[6. Suitability maps](./plots)
+[7. Suitability maps](./plots)
 
 
