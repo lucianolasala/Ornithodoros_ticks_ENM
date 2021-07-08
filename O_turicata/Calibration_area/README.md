@@ -1,10 +1,7 @@
 
-# Calibration area (M) consist of ecoregions in area of interest (i.e., Argentina) where O. turicata
-# has been recorded
+Calibration area (M) consist of ecoregions in area of interest (i.e., Argentina) where O. turicata has been recorded
 
-# Load required packages
-
-## Installing the package devtools
+Load required packages
 
 ```r
 rm(list=ls(all=TRUE))
