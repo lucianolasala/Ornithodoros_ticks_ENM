@@ -1,9 +1,8 @@
-# Running "kuenm"
+# Model calibration
 
 devtools::install_github("marlonecobos/kuenm")
 
 rm(list=ls(all=TRUE))
-
 
 if(!require(devtools)){
   install.packages("devtools")
