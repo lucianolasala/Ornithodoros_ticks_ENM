@@ -9,15 +9,12 @@ rm(list=ls(all=TRUE))
 if(!require(tidyverse)){
   install.packages("tidyverse")
 }
-
 if(!require(sf)){
   install.packages("sf")
 }
-
 if(!require(readr)){
   install.packages("readr")
 }
-
 if(!require(raster)){
   install.packages("raster")
 }
@@ -27,7 +24,7 @@ library("sf")
 library("tidyverse")
 library("raster")
 
-# Set working dir
+# Set working directory
 
 setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
 ```
