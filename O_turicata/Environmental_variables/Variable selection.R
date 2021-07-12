@@ -1,3 +1,5 @@
+
+
 files <- list.files(pattern=".tif$", full.names = TRUE)
 files
 class(files)

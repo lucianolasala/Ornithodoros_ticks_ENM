@@ -47,7 +47,10 @@ length(files)  # 19
 
 # Load Argentina polygon
 
-proj_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_ecoregions_projection/O_turicata_projection.gpkg")
+proj_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg")
+str(proj_area)
+plot(proj_area$geom)
+
 
 
 # Mask raster stack with 19 variables using the vector
