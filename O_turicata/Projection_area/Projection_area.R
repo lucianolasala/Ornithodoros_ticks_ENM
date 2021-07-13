@@ -257,7 +257,7 @@ class(vapr_mean)  # "RasterLayer"
 
 # Save output rasters as GTiff files
 
-writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/vapor_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/vapor_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 #--------------------------------------------------------------------------------
@@ -310,7 +310,7 @@ tmin_mean = mean(tmin_mask)
 
 # Save output rasters as GTiff files
 
-writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/tmin_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/tmin_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 #--------------------------------------------------------------------------------
@@ -363,7 +363,7 @@ tmax_mean = mean(tmax_mask)
 
 # Save output rasters as GTiff files
 
-writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/tmax_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/tmax_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 #--------------------------------------------------------------------------------
@@ -416,7 +416,7 @@ tavg_mean = mean(tavg_mask)
 
 # Save output rasters as GTiff files
 
-writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/tavg_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/tavg_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 #--------------------------------------------------------------------------------
@@ -469,7 +469,7 @@ prec_mean = mean(prec_mask)
 
 # Save output rasters as GTiff files
 
-writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/prec_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/prec_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 #--------------------------------------------------------------------------------
@@ -522,7 +522,7 @@ wind_mean = mean(wind_mask)
 
 # Save output rasters as GTiff files
 
-writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/wind_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/wind_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 
