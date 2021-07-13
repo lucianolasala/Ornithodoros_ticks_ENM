@@ -751,39 +751,39 @@ writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Mo
 
 rm(list=ls(all=TRUE))
 
-setwd("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/Historial data/WorldClim_monthly climate data/wc2.1_5m_prec")
+setwd("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/Historial data/WorldClim_monthly climate data/wc2.1_5m_wind")
 
-prec = list.files(pattern = ".tif$", all.files = TRUE, full.names = FALSE)
-prec
+wind = list.files(pattern = ".tif$", all.files = TRUE, full.names = FALSE)
+wind
 
-prec_stack = stack(prec)
-class(prec_stack)  # "RasterStack"
+wind_stack = stack(wind)
+class(wind_stack)  # "RasterStack"
 
 # Crop by extent 
 
 cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
 
-prec_crop <- crop(prec_stack, cal_area)
+wind_crop <- crop(wind_stack, cal_area)
 
-class(prec_crop)  # "RasterBrick"
+class(wind_crop)  # "RasterBrick"
 
-plot(prec_crop[[1]])
+plot(wind_crop[[1]])
 
 # Mask
 
-prec_mask <- raster::mask(prec_crop, cal_area)
+wind_mask <- raster::mask(wind_crop, cal_area)
 
-class(prec_mask)  # "RasterBrick"
+class(wind_mask)  # "RasterBrick"
 
-plot(prec_mask[[1]])
+plot(wind_mask[[1]])
 
 par(mfrow=c(1,2))
-plot(prec_crop[[1]])
-plot(prec_mask[[1]])
+plot(wind_crop[[1]])
+plot(wind_mask[[1]])
 
 # Pixel-wise stats for raster brick 
 
-prec_mean = mean(prec_mask)
+wind_mean = mean(wind_mask)
 
 #--------------------------------------------------------------------------------
 # Raster exportation
@@ -791,4 +791,4 @@ prec_mean = mean(prec_mask)
 
 # Save output rasters as GTiff files
 
-writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/prec_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/wind_mean.asc", format = "ascii", overwrite = TRUE)
