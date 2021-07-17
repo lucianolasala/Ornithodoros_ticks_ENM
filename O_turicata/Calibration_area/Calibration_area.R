@@ -21,10 +21,15 @@ if(!require(raster)){
   install.packages("raster")
 }
 
+if(!require(udunits2)){
+  install.packages("udunits2")
+}
+
 library("readr")
 library("sf")
 library("tidyverse")
 library("raster")
+library("udunits2")
 
 # Set working dir
 
@@ -96,12 +101,13 @@ turicata2 <- st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_t
 class(turicata2)  # Loads as sf dataframe
 head(turicata2)
 
-turicata_df <- as.data.frame(sf::st_coordinates(turicata1))  # retrieve coordinates in matrix form
+turicata_df <- as.data.frame(sf::st_coordinates(turicata2))  # retrieve coordinates in matrix form
 head(turicata_df)
 
 colnames(turicata_df) <- c("Long", "Lat")  # Name columns Long and Lat
 head(turicata_df)
 length(turicata_df$Long)
+
 
 #------------------------------------------------------------------------------------
 # Load ecorregions of the world
@@ -160,32 +166,37 @@ st_write(eco_world_fix, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/
 # los elementos de una lista (de alli la letra "l")
 # Referencia para lapply: https://bookdown.org/jboscomendoza/r-principiantes4/lapply.html
 
-turicata_sf <- do.call("st_sfc", c(lapply(1:nrow(turicata_df), 
+# turicata_df is "data.frame" and needs to be transformed into "sf" for further spatial operations
+
+turicata_sf <- do.call("st_sfc", c(lapply(1:nrow(turicata_df),  
                        function(i) {
                        st_point(as.numeric(turicata_df[i, ]))}), list("crs" = 4326))) 
 
 head(turicata_sf)
 class(turicata_sf)  # "sfc_POINT" "sfc"
 
-turicata_trans <- st_transform(turicata_sf, 4326) # Transform or convert coordinates of simple feature
-head(turicata_trans)
+#turicata_trans <- st_transform(turicata_sf, 4326) # Transform or convert coordinates of simple feature
+#head(turicata_trans)
 
-eco_trans <- st_transform(eco_world, 4326)        # Transform or convert coordinates of simple feature
-head(eco_trans)
+#eco_trans <- st_transform(eco_world, 4326)        # Transform or convert coordinates of simple feature
+#head(eco_trans)
 
 # Intersect and extract ecoregion name
 
 sf::sf_use_s2(TRUE)
 
-turicata_df$Ecoregion <- apply(st_intersects(eco_trans, turicata_trans, sparse = FALSE), 2,
-                         function(col) { 
-                         eco_trans[which(col), ]$ECO_NAME
-                         })
+turicata_df$Ecoregion <- apply(st_intersects(eco_world, turicata_sf, sparse = FALSE), MARGIN = 2,
+                               function(eco) { 
+                                 eco_world[which(eco), ]$ECO_NAME
+                               })
 
-s2_available = !inherits(try(sf_use_s2(TRUE), silent=TRUE), "try-error")
-s2_available
+head(turicata_df)
 
-library(s2)
+
+#s2_available = !inherits(try(sf_use_s2(TRUE), silent=TRUE), "try-error")
+#s2_available
+
+#library(s2)
 
 turicata_df
 class(turicata_df)
@@ -208,6 +219,8 @@ unique_eco
 
 unique_eco_map <- eco_world[eco_world$ECO_NAME %in% unique_eco$Ecoregion, ]
 
+plot(unique_eco_map$geom)
+
 class(unique_eco_map)
 str(unique_eco_map)
 unique_eco_map$ECO_NAME
@@ -216,34 +229,11 @@ st_write(unique_eco_map, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data
 
 
 #-------------------------------------------------------------------------
-# Intersect between world ecorregions and O. turicata occurrences 2
-#-------------------------------------------------------------------------
-
-install.packages("cleangeo")
-
-eco_world = readOGR("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/World ecoregions/wwf_terr_ecos.gpkg")
-slotNames(eco_world)
-
-eco_cleaned <- clgeo_Clean(eco_world, errors.only = NULL, strategy = "POLYGONATION", verbose = FALSE)
-class(eco_cleaned)  # sp
-head(eco_cleaned)
-
-writeOGR(eco_cleaned, layer = "eco_cleaned", "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions_cleaned.shp", driver = "ESRI Shapefile")
-
-turicata_eco = turicata1[eco_world, ]
-
-eco_world_sf = st_as_sf(eco_world)      
-class(eco_world_sf)
-
-st_write(eco_world_sf, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_dissolved_fix.gpkg", driver = "gpkg")
-
-
-writeOGR(eco_world, layer = "eco_world", "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_ecoregions_fixed.shp", driver = "ESRI Shapefile")
-
-
-#-------------------------------------------------------------------------
 # Disolve ecoregions for O. turicata
 #-------------------------------------------------------------------------
+
+install.packages("rgdal")
+install.packages("rgeos")
 
 turicata_dis <- readOGR("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_ecoregions.gpkg")
 
@@ -252,11 +242,39 @@ class(turicata_dis)
 
 
 turicata_dissolved <- rgeos::gUnaryUnion(turicata_dis)   # fc in rgeos pkg
-class(turicata_dissolved)  # Need to convert SpatialPolygon to SpatialPolygonsDataFrame
+class(turicata_dissolved)  # SpatialPolygons, no need to SpatialPolygonsDataFrame
 
-turicata_dissolved <- as(turicata_dissolved, "SpatialPolygonsDataFrame")
-class(turicata_dissolved)
-plot(turicata_dissolved)
+str(turicata_dissolved)
+plot(turicata_dissolved, col = "blue")
+
+# The difference between SpatialPolygons and SpatialPolygonsDataFrame are the attributes 
+# that are associated with the polygons. SpatialPolygonsDataFrames have additional information 
+# associated with the polygon (e.g., site, year, individual, etc.) while SpatialPolygons contain 
+# only the spatial information (vertices) about the polygon.
+
+turicata_dissolved_spdf <- as(turicata_dissolved, "SpatialPolygonsDataFrame")
+
+class(turicata_dissolved_spdf)
+plot(turicata_dissolved_spdf)
+
+str(turicata_dissolved)
+slotNames(turicata_dissolved)
+
+turicata_dissolved@polygons
+turicata_dissolved@polygons %>% class()  # list
+turicata_dissolved@polygons %>% length() # 1
+turicata_dissolved@polygons[[1]] %>% class()
+turicata_dissolved@polygons[[1]]@Polygons[[477]] %>% slotNames()  # list of length 1 with 477 elements
+
+
+turicata_dissolved@plotOrder
+turicata_dissolved@bbox
+turicata_dissolved@proj4string
+
+slotNames(turicata_dissolved_spdf)
+
+turicata_dissolved_spdf@data
+
 
 turicata_sf = st_as_sf(turicata_dissolved)      
 class(turicata_sf)
@@ -282,7 +300,7 @@ turicata_dissolved
 turicata = st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
 
 turicata %<>% 
-    st_as_sf(coords = c("Long","Lat")) %<>%
+    st_as_sf(coords = c("Long", "Lat")) %<>%
     st_sf(crs = 4326)
 
 p = ggplot() +   # Create a ggplot object
