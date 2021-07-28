@@ -805,7 +805,7 @@ plot(wind_mask[[1]])
 wind_mean = mean(wind_mask)
 
 #--------------------------------------------------------------------------------
-# Raster exportation
+# Raster exportation.
 #--------------------------------------------------------------------------------
 
 # Save output rasters as ascii files
