@@ -61,6 +61,7 @@ plot(bioclim_crop[[1]])
 # How to save cropped rasters as raster brick
 
 writeRaster(bioclim_crop, filename = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/BioClim_M.tif"), format = "GTiff", overwrite = TRUE, options=c("INTERLEAVE=BAND","COMPRESS=LZW"))
+writeRaster(bioclim_crop, filename = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/BioClim_M.tif"), format = "ascii", overwrite = TRUE, options=c("INTERLEAVE=BAND","COMPRESS=LZW"))
 
 # Mask
 
@@ -80,7 +81,7 @@ variables <- as.factor(c("Bio1","Bio2","Bio3","Bio4","Bio5","Bio6",
 
 
 for(i in 1:length(variables)) {
-  writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/", variables[i]), format = "ascii")
+  writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Projection_historical/", variables[i]), format = "ascii")
 }
 
 
@@ -204,7 +205,8 @@ solar_rad_mean[4657]  # 19010.67
 
 # Save output rasters as GTiff files
 
-writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/solar_rad_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_historical/solar_rad_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_historical/solar_rad_mean.asc", format = "GTiff", overwrite = TRUE)
 
 #---------------------------------------------------------------------------------------
 # Water vapor pressure (kPa): reduction using mean

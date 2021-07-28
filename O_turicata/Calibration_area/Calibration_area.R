@@ -317,7 +317,7 @@ p
 
 rm(list=ls(all=TRUE))
 
-setwd("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\WorldClim Bioclimatic variables_wc2.1_5m_bio")
+setwd("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\WorldClim Bioclimatic variables_wc2.1_5m_bio")  # 19 WorldClim variables for whole world
 
 files <- list.files(pattern = ".tif$", all.files = TRUE, full.names = TRUE)
 length(files)  # 19
@@ -356,7 +356,7 @@ variables <- as.factor(c("Bio1","Bio2","Bio3","Bio4","Bio5","Bio6",
 
 
 for(i in 1:length(variables)) {
-writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/", variables[i]), format = "ascii")
+writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/", variables[i]), format = "ascii")
 }
 
 
@@ -475,9 +475,10 @@ solar_rad_range[18999] # 17173
 range = solar_rad_max[18999]-solar_rad_min[18999]
 range
 
-# Save output rasters as GTiff files
+# Save output raster as ascii file
 
-writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/solar_rad_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/solar_rad_mean.asc", format = "GTiff", overwrite = TRUE)
+writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/solar_rad_mean.asc", format = "ascii", overwrite = TRUE)
 
 
 #--------------------------------------------------------------------------------
@@ -542,10 +543,10 @@ class(vapr_mean)  # "RasterLayer"
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ascii files
 
-writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/vapor_mean.asc", format = "ascii", overwrite = TRUE)
-
+writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/vapor_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/vapor_mean.tif", format = "GTiff", overwrite = TRUE)
 
 #--------------------------------------------------------------------------------
 # Minimum temperature (°C)
@@ -595,10 +596,10 @@ tmin_mean = mean(tmin_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ascii files
 
-writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/tmin_mean.asc", format = "ascii", overwrite = TRUE)
-
+writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/tmin_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/tmin_mean.tif", format = "GTiff", overwrite = TRUE)
 
 #--------------------------------------------------------------------------------
 # Maximum temperature (°C)
@@ -648,10 +649,10 @@ tmax_mean = mean(tmax_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ascii files
 
-writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/tmax_mean.asc", format = "ascii", overwrite = TRUE)
-
+writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/tmax_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/tmax_mean.tif", format = "GTiff", overwrite = TRUE)
 
 #--------------------------------------------------------------------------------
 # Average temperature (°C)
@@ -701,10 +702,10 @@ tavg_mean = mean(tavg_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ascii files
 
-writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/tavg_mean.asc", format = "ascii", overwrite = TRUE)
-
+writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/tavg_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/tavg_mean.tif", format = "GTiff", overwrite = TRUE)
 
 #--------------------------------------------------------------------------------
 # Precipitation (mm)
@@ -754,10 +755,10 @@ prec_mean = mean(prec_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ascii files
 
-writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/prec_mean.asc", format = "ascii", overwrite = TRUE)
-
+writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/prec_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/prec_mean.tif", format = "GTiff", overwrite = TRUE)
 
 #--------------------------------------------------------------------------------
 # Wind speed (m s-1)
@@ -807,6 +808,7 @@ wind_mean = mean(wind_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ascii files
 
-writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/wind_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/wind_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/wind_mean.tif", format = "GTiff", overwrite = TRUE)
