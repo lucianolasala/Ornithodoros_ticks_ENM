@@ -401,7 +401,7 @@ install.packages("corrplot")
 library(corrplot)
 
 corr_plot <- corrplot(cor.matrix, method = "color", type = "lower", 
-         mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex = 0.5)
+         mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex = 0.5, p.mat = p.mat)
 
 ggsave(...)  # No funciona
 

@@ -102,7 +102,7 @@ plot.new()
 
 corr_plot <- ggcorrplot(cor.matrix, outline.col = "white", type = "lower", 
                         tl.cex = 8, tl.col = "black", tl.srt = 90, 
-                        ggtheme = ggplot2::theme_gray)
+                        ggtheme = ggplot2::theme_gray, p.mat = p.mat)
                         
 corr_plot
 
