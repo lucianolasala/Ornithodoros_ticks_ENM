@@ -275,7 +275,6 @@ slotNames(turicata_dissolved_spdf)
 
 turicata_dissolved_spdf@data
 
-
 turicata_sf = st_as_sf(turicata_dissolved)      
 class(turicata_sf)
 
@@ -347,7 +346,7 @@ class(bioclim_mask)  # "RasterBrick"
 
 plot(bioclim_mask[[1]])
 
-individual_r <- unstack(bioclim_mask)
+individual_r <- unstack(bioclim_mask)  # Hay que hacer unmask para luego guardar cada raster  individual
 class(individual_r)  # list
 
 plot(individual_r[[2]])
