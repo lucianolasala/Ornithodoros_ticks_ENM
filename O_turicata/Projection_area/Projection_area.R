@@ -525,5 +525,3 @@ wind_mean = mean(wind_mask)
 
 writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/wind_mean.asc", format = "ascii", overwrite = TRUE)
 
-
-
