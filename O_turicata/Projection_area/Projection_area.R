@@ -84,7 +84,6 @@ for(i in 1:length(variables)) {
   writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Projection_historical/", variables[i]), format = "ascii")
 }
 
-
 # Alternative approach to masking and saving each raster file
 
 outfiles <- file.path("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/Bioclim", 
@@ -205,8 +204,8 @@ solar_rad_mean[4657]  # 19010.67
 
 # Save output rasters as GTiff files
 
-writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_historical/solar_rad_mean.asc", format = "ascii", overwrite = TRUE)
-writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_historical/solar_rad_mean.asc", format = "GTiff", overwrite = TRUE)
+writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/solar_rad_mean.asc", format = "ascii", overwrite = TRUE)
+writeRaster(solar_rad_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/solar_rad_mean.asc", format = "GTiff", overwrite = TRUE)
 
 #---------------------------------------------------------------------------------------
 # Water vapor pressure (kPa): reduction using mean
@@ -228,7 +227,7 @@ class(vapr_stack)  # "RasterStack"
 
 # Crop by extent 
 
-cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg") 
 
 vapr_crop <- crop(vapr_stack, cal_area)
 
@@ -257,7 +256,7 @@ class(vapr_mean)  # "RasterLayer"
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ASCII files
 
 writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/vapor_mean.asc", format = "ascii", overwrite = TRUE)
 
@@ -282,7 +281,7 @@ class(tmin_stack)  # "RasterStack"
 
 # Crop by extent 
 
-cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg") 
 
 tmin_crop <- crop(tmin_stack, cal_area)
 
@@ -310,7 +309,7 @@ tmin_mean = mean(tmin_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ASCII files
 
 writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/tmin_mean.asc", format = "ascii", overwrite = TRUE)
 
@@ -335,7 +334,7 @@ class(tmax_stack)  # "RasterStack"
 
 # Crop by extent 
 
-cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg") 
 
 tmax_crop <- crop(tmax_stack, cal_area)
 
@@ -363,7 +362,7 @@ tmax_mean = mean(tmax_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ASCII files
 
 writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/tmax_mean.asc", format = "ascii", overwrite = TRUE)
 
@@ -388,7 +387,7 @@ class(tavg_stack)  # "RasterStack"
 
 # Crop by extent 
 
-cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg") 
 
 tavg_crop <- crop(tavg_stack, cal_area)
 
@@ -441,7 +440,7 @@ class(prec_stack)  # "RasterStack"
 
 # Crop by extent 
 
-cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg") 
 
 prec_crop <- crop(prec_stack, cal_area)
 
@@ -469,7 +468,7 @@ prec_mean = mean(prec_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ASCII files
 
 writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/prec_mean.asc", format = "ascii", overwrite = TRUE)
 
@@ -494,7 +493,7 @@ class(wind_stack)  # "RasterStack"
 
 # Crop by extent 
 
-cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg") 
+cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_G/O_turicata_projection.gpkg")  
 
 wind_crop <- crop(wind_stack, cal_area)
 
@@ -522,7 +521,7 @@ wind_mean = mean(wind_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as GTiff files
+# Save output rasters as ASCII files
 
 writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/wind_mean.asc", format = "ascii", overwrite = TRUE)
 
