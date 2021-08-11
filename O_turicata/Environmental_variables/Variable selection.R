@@ -2,13 +2,21 @@
 # Correlation analysis for variable selection
 #------------------------------------------------------------------------------------
 
+gc()
+
 rm(list=ls(all=TRUE))
+
+if(!require(virtualspecies)){
+  install.packages("virtualspecies")
+}
 
 library(tidyverse)
 library(sf)
 library(stars)
 library(magrittr)
-library(stars)
+library(raster)
+library(xlsx)
+library(virtualspecies)
 
 path1 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/")
 path2 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/")
@@ -19,8 +27,6 @@ files1
 #------------------------------------------------------------------------
 # Check spatial resolution and raster extent for layers
 #------------------------------------------------------------------------
-
-library(raster)
 
 mytable1 <- NULL
 
@@ -34,7 +40,6 @@ mytable1
 
 xlsx::write.xlsx(mytable, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
-
 files2 <- list.files(path = path2, pattern = ".asc$", full.names = TRUE)
 files2
 
@@ -46,15 +51,15 @@ for(i in 1:26){
 }
 
 colnames(mytable2) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
+
 mytable2
 
 xlsx::write.xlsx(mytable2, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_projection.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
-
-
-
+#------------------------------------------------------------------------------------
 # Identify cells with data
+#------------------------------------------------------------------------------------
 
 st1 <- read_stars(files1[1]) %>% set_names("z")
 n1 <- which(!is.na(st1$z))  # 71% of non-na cells in both areas
@@ -76,7 +81,7 @@ p2
 
 set.seed(100)
 
-ssize = 10000
+ssize = 5000
 sm1 <- sample(n1, size = floor(ssize * p1))
 sm2 <- sample(n2, size = floor(ssize * p2))
 
@@ -86,6 +91,7 @@ length(sm2)
 ## Sample data 
 
 dt <- NULL
+
 for(i in 1:26){
   st1 <- read_stars(files1[i]) %>% set_names("z")
   st2 <- read_stars(files2[i]) %>% set_names("z")
@@ -93,6 +99,8 @@ for(i in 1:26){
 }
 
 dt
+
+class(dt)
 
 #----------------------------------------------------------------
 # Julian. Explore correlation and remove highly correlated variables
@@ -164,8 +172,11 @@ corr_plot <- corrplot(DF, method = "color", type = "lower",
 install.packages("ggcorrplot")
 library(ggcorrplot)
 
-write.xlsx(cor$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_r_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
-write.xlsx(cor$P, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_P_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(cor$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_r_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(cor$P, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_P_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
 
 install.packages("ggcorrplot")
 library(ggcorrplot)
@@ -187,97 +198,39 @@ corr_plot
 
 cowplot::save_plot(plot = corr_plot, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_plot.png", type = "cairo", base_height = 8, base_width = 8)
 
-
-
-
-
-
-
-
-
-
-
-
-mystack <- stack(files[c(1:26)])
-dim(mystack)  # 230454 pixels
-
-stackSave(mystack, "Stack")
-
 #-------------------------------------------------------------------------
-# Collinearity analysis using variance inflation factor
-# Identify cells with data
+# Introduction to Feature selection for bioinformaticians using R, 
+# correlation matrix filters, PCA & backward selection
 #-------------------------------------------------------------------------
 
-# Collinearity analysis using correlation matrix
+install.packages("caret")
+library(caret)
 
-mystack <- stackOpen("Stack")
-class(mystack)
+highlyCor <- findCorrelation(DF, 0.80)
+highlyCor
+length(highlyCor)  # 15
 
-k <- which(!is.na(mystack[[1]] []))
-class(k)
-is.vector(k)
-length(k)  # 56817
-head(k)
+rm(highlyCor)
 
-k <- sample(k, size = 10000)
-class(k)
+# Apply correlation filter at 0.8,
+# Then we remove all the variable correlated with more 0.8.
 
-k <- raster::extract(mystack, k)
-class(k)   # Matrix
-length(k)  # 260000
+Filtered <- DF[,-highlyCor]
+class(Filtered)
+dim(Filtered)  # 26 11
 
-length(which(is.na(k)))
+cor(Filtered)
 
-cor.matrix <- cor(k, use = "pairwise.complete.obs")  
+corMatMy <- cor(Filtered)  # stats. Corre correlation for filtered data 
+class(corMatMy)  # "matrix"
 
-head(cor.matrix)
-dim(cor.matrix)
-
-DF <- as.data.frame(cor.matrix)
-
-colnames(cor.matrix) <- c("Bio1","Bio10","Bio11","Bio12","Bio13","Bio14",
-                          "Bio15","Bio16","Bio17","Bio18","Bio19","Bio2", 
-                          "Bio3","Bio4","Bio5","Bio6","Bio7", 
-                          "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
-                          "tmax_mean","tmin_mean","vapor_mean","wind_mean")
-
-
-rownames(cor.matrix) <- c("Bio1","Bio10","Bio11","Bio12","Bio13","Bio14",
-                          "Bio15","Bio16","Bio17", "Bio18", "Bio19","Bio2", 
-                          "Bio3","Bio4","Bio5","Bio6","Bio7", 
-                          "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
-                          "tmax_mean","tmin_mean","vapor_mean","wind_mean")
+corrplot(corMatMy, order = "hclust", addrect = 2, method = "number", diag = FALSE, type = "lower", mar = c(0,0,0,0))
 
 
 
-# Install package named WriteXLS
 
-install.packages("xlsx")
-library(xlsx)
 
-write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
-install.packages("corrplot")
-library(corrplot)
 
-corr_plot <- corrplot(cor.matrix, method = "color", type = "lower", 
-                      mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex = 0.5)
 
-install.packages("ggcorrplot")
-library(ggcorrplot)
-
-# Compute a matrix of correlation p-values
-
-p.mat <- cor_pmat(cor.matrix)
-p.mat
-
-plot.new()
-
-corr_plot <- ggcorrplot(cor.matrix, outline.col = "white", type = "lower", 
-                        tl.cex = 8, tl.col = "black", tl.srt = 90, 
-                        ggtheme = ggplot2::theme_gray, p.mat = p.mat)
-                        
-corr_plot
-
-save_plot(plot = corr_plot, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_plot_calibration.png", type = "cairo", dpi = 600)
 
