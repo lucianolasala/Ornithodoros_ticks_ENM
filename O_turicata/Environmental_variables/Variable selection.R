@@ -175,7 +175,7 @@ library(ggcorrplot)
 write.xlsx(cor$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_r_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 write.xlsx(cor$P, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_P_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
-write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix_A.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
 install.packages("ggcorrplot")
@@ -220,6 +220,11 @@ class(Filtered)
 dim(Filtered)  # 26 11
 
 cor(Filtered)
+
+cor = Hmisc::rcorr(as.matrix(Filtered), type = "spearman")
+cor$r
+
+write.xlsx(cor$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix_B.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 corMatMy <- cor(Filtered)  # stats. Corre correlation for filtered data 
 class(corMatMy)  # "matrix"
