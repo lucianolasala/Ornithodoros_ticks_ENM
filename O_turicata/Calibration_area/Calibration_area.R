@@ -335,7 +335,7 @@ bioclim_crop <- crop(allrasters, cal_area)
 extent(bioclim_crop[[1]])
 
 str(bioclim_crop)
-class(bioclim_crop)  # "RasterBrick"
+class(bioclim_crop)  # Changes from RasterStack to RasterBrick
 
 plot(bioclim_crop[[1]])
 
