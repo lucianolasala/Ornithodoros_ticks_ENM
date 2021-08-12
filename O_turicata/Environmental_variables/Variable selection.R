@@ -40,6 +40,7 @@ mytable1
 
 xlsx::write.xlsx(mytable, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
+
 files2 <- list.files(path = path2, pattern = ".asc$", full.names = TRUE)
 files2
 
@@ -99,8 +100,9 @@ for(i in 1:26){
 }
 
 dt
+class(dt)  # matrix
+dim(dt)    # 4999   26
 
-class(dt)
 
 #----------------------------------------------------------------
 # Julian. Explore correlation and remove highly correlated variables
@@ -138,16 +140,17 @@ while(length(to.remove) > 0){
 # Luciano. Correlation (no loop included)
 #----------------------------------------------------------------
 
-cor = Hmisc::rcorr(as.matrix(dt), type = "spearman")
-class(cor)
-str(cor)
+cor1 = Hmisc::rcorr(dt, type = "spearman")
+class(cor1)
+str(cor1)
 
-cor$r
-cor$P
+cor1$r
+cor1$P
 
-DF <- cor$r
+DF <- cor1$r
 
 class(DF)  # Matrix
+dim(DF)    # 26 26
 
 colnames(DF) <- c("Bio1","Bio10","Bio11","Bio12","Bio13","Bio14",
                           "Bio15","Bio16","Bio17","Bio18","Bio19","Bio2", 
@@ -162,6 +165,8 @@ rownames(DF) <- c("Bio1","Bio10","Bio11","Bio12","Bio13","Bio14",
                           "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
                           "tmax_mean","tmin_mean","vapor_mean","wind_mean")
 DF
+
+class(DF)  # Matrix
 
 install.packages("corrplot")
 library(corrplot)
@@ -186,7 +191,6 @@ library(ggcorrplot)
 
 p.mat <- cor_pmat(DF)
 p.mat
-
 plot.new()
 
 corr_plot <- ggcorrplot(DF, outline.col = "white", type = "lower", 
@@ -196,42 +200,60 @@ corr_plot <- ggcorrplot(DF, outline.col = "white", type = "lower",
 
 corr_plot
 
+corrplot(DF, order = "hclust")
+
 cowplot::save_plot(plot = corr_plot, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_plot.png", type = "cairo", base_height = 8, base_width = 8)
 
 #-------------------------------------------------------------------------
 # Introduction to Feature selection for bioinformaticians using R, 
 # correlation matrix filters, PCA & backward selection
+# https://www.r-bloggers.com/2013/10/introduction-to-feature-selection-for-bioinformaticians-using-r-correlation-matrix-filters-pca-backward-selection/
 #-------------------------------------------------------------------------
 
 install.packages("caret")
 library(caret)
 
-highlyCor <- findCorrelation(DF, 0.80)
-highlyCor
+dim(DF)
+class(DF)
+
+# La matriz DF es la matriz de correlacion anterior que tiene todos los valores de
+# correlacion
+# The function fingCorrelation searches through a "correlation matrix" and returns a 
+# vector of integers corresponding to columns to remove to reduce pair-wise correlations.
+
+highlyCor <- findCorrelation(DF, cutoff = 0.80)
+highlyCor  # 25 24 13 22  1 23 15 18 14 10  2  7 16  5  9 (15 columns to remove)
 length(highlyCor)  # 15
 
-rm(highlyCor)
 
 # Apply correlation filter at 0.8,
 # Then we remove all the variable correlated with more 0.8.
 
 Filtered <- DF[,-highlyCor]
 class(Filtered)
-dim(Filtered)  # 26 11
+dim(Filtered)  # 26 11 (se sacaron 15)
 
-cor(Filtered)
+mat_keep_rows <- c("Bio11","Bio12","Bio14","Bio16","Bio19","Bio2",
+                   "Bio7","Bio9","prec_mean","solar_rad_mean","wind_mean")
 
-cor = Hmisc::rcorr(as.matrix(Filtered), type = "spearman")
-cor$r
+mat_keep_cols <- c("Bio11","Bio12","Bio14","Bio16","Bio19","Bio2",
+                   "Bio7","Bio9","prec_mean","solar_rad_mean","wind_mean")
 
-write.xlsx(cor$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix_B.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+mat_subset <- DF[rownames(DF) %in% mat_keep_rows, colnames(DF) %in% mat_keep_cols]  # Extract rows from matrix
+mat_subset
 
-corMatMy <- cor(Filtered)  # stats. Corre correlation for filtered data 
-class(corMatMy)  # "matrix"
+# Ahora, si hiciera un analisis de correlacion sobre esa nueva seleccion de variables
+# no deberia haber variables con correlacion > 0.8.
 
-corrplot(corMatMy, order = "hclust", addrect = 2, method = "number", diag = FALSE, type = "lower", mar = c(0,0,0,0))
+cor2 = Hmisc::rcorr(mat_subset, type = "spearman")
 
+DF1 <- cor2$r
 
+class(DF1)
+
+corrplot(DF1, order = "hclust", addrect = 2, method = "number", diag = FALSE, type = "lower", mar = c(0,0,0,0))
+
+write.xlsx(DF1, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix_C.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
 

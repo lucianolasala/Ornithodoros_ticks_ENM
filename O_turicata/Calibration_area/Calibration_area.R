@@ -349,20 +349,24 @@ plot(bioclim_mask[[1]])
 individual_r <- unstack(bioclim_mask)  # Hay que hacer unmask para luego guardar cada raster  individual
 class(individual_r)  # list
 
-plot(individual_r[[2]])
+plot(individual_r[[1]])
 
 variables <- as.factor(c("Bio1","Bio2","Bio3","Bio4","Bio5","Bio6",
                          "Bio7","Bio8","Bio9","Bio10","Bio11","Bio12","Bio13",
                          "Bio14","Bio15","Bio16","Bio17","Bio18","Bio19"))
 
+# Guardar como GTiff
 
 for(i in 1:length(variables)) {
 writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/", variables[i]), format = "GTiff")
 }
 
+# Guardar como ascii
+
 for(i in 1:length(variables)) {
   writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/", variables[i]), format = "ascii")
 }
+
 
 # Alternative approach to masking and saving each raster file
 
@@ -398,7 +402,8 @@ colnames(mytable) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
 mytable
 
 write.csv(mytable, file = "Raster properties.csv")
-xlsx::write.xlsx(mytable, file = "./Raster_properties.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+xlsx::write.xlsx(mytable, file = "Raster_properties.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
 #---------------------------------------------------------------------------------------
@@ -407,6 +412,7 @@ xlsx::write.xlsx(mytable, file = "./Raster_properties.xlsx", sheetName = "Sheet1
 # There are monthly climate data for minimum, mean, and maximum temperature, precipitation, 
 # solar radiation, wind speed, water vapor pressure, and for total precipitation.
 # Temporal series: 1970-2000.
+
 # Source: https://www.worldclim.org/data/worldclim21.html
 
 # Note: Each layer represents the mean value for each month over the 1970-2000
@@ -426,6 +432,7 @@ solar_rad = list.files(pattern = ".tif$", all.files = TRUE, full.names = FALSE)
 solar_rad
 
 solar_rad_stack = stack(solar_rad)
+
 class(solar_rad_stack)  # "RasterStack"
 
 # Crop by extent 
@@ -454,6 +461,8 @@ plot(solar_mask[[1]])
 # Pixel-wise stats for raster brick 
 
 solar_rad_mean = mean(solar_mask)
+solar_rad_mean
+
 class(solar_rad_mean)  # "RasterLayer"
 
 #--------------------------------------------------------------------------------
@@ -506,7 +515,7 @@ plot(individual_solar[[1]])
 # across layers to obtain summary statistics for each location (pixel) during this period. 
 #---------------------------------------------------------------------------------------
 
-rm(list=ls(all=TRUE))
+rm(list=ls(all=TRUE))   # remove y limpiar consola con ctrl + L 
 
 setwd("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/Historial data/WorldClim_monthly climate data/wc2.1_5m_vapr")
 
@@ -547,10 +556,9 @@ class(vapr_mean)  # "RasterLayer"
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as ascii files
-
 writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/vapor_mean.asc", format = "ascii", overwrite = TRUE)
 writeRaster(vapr_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/vapor_mean.tif", format = "GTiff", overwrite = TRUE)
+
 
 #--------------------------------------------------------------------------------
 # Minimum temperature (°C)
@@ -600,10 +608,9 @@ tmin_mean = mean(tmin_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as ascii files
-
 writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/tmin_mean.asc", format = "ascii", overwrite = TRUE)
 writeRaster(tmin_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/tmin_mean.tif", format = "GTiff", overwrite = TRUE)
+
 
 #--------------------------------------------------------------------------------
 # Maximum temperature (°C)
@@ -652,8 +659,6 @@ tmax_mean = mean(tmax_mask)
 #--------------------------------------------------------------------------------
 # Raster exportation
 #--------------------------------------------------------------------------------
-
-# Save output rasters as ascii files
 
 writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/tmax_mean.asc", format = "ascii", overwrite = TRUE)
 writeRaster(tmax_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/tmax_mean.tif", format = "GTiff", overwrite = TRUE)
@@ -706,8 +711,6 @@ tavg_mean = mean(tavg_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as ascii files
-
 writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/tavg_mean.asc", format = "ascii", overwrite = TRUE)
 writeRaster(tavg_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/tavg_mean.tif", format = "GTiff", overwrite = TRUE)
 
@@ -759,10 +762,9 @@ prec_mean = mean(prec_mask)
 # Raster exportation
 #--------------------------------------------------------------------------------
 
-# Save output rasters as ascii files
-
 writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/prec_mean.asc", format = "ascii", overwrite = TRUE)
 writeRaster(prec_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/prec_mean.tif", format = "GTiff", overwrite = TRUE)
+
 
 #--------------------------------------------------------------------------------
 # Wind speed (m s-1)
@@ -811,8 +813,6 @@ wind_mean = mean(wind_mask)
 #--------------------------------------------------------------------------------
 # Raster exportation
 #--------------------------------------------------------------------------------
-
-# Save output rasters as ascii files
 
 writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/wind_mean.asc", format = "ascii", overwrite = TRUE)
 writeRaster(wind_mean, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/GTIFF/wind_mean.tif", format = "GTiff", overwrite = TRUE)
