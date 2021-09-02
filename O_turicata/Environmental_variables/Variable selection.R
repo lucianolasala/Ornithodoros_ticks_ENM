@@ -6,10 +6,6 @@ gc()
 
 rm(list=ls(all=TRUE))
 
-if(!require(virtualspecies)){
-  install.packages("virtualspecies")
-}
-
 library(tidyverse)
 library(sf)
 library(stars)
@@ -17,6 +13,9 @@ library(magrittr)
 library(raster)
 library(xlsx)
 library(virtualspecies)
+library(corrplot)
+library(ggcorrplot)
+
 
 path1 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/")
 path2 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/")
@@ -100,8 +99,9 @@ for(i in 1:26){
 }
 
 dt
+
 class(dt)  # matrix
-dim(dt)    # 4999   26
+dim(dt)    # 4999 (cells) * 26 (variables)
 
 
 #----------------------------------------------------------------
@@ -137,15 +137,20 @@ while(length(to.remove) > 0){
 }
 
 #----------------------------------------------------------------
-# Luciano. Correlation (no loop included)
+# LFLS. Correlation (no loop included)
+# Uso de funcion rcorr del paquete Hmisc
 #----------------------------------------------------------------
 
 cor1 = Hmisc::rcorr(dt, type = "spearman")
 class(cor1)
 str(cor1)
+is.list(cor1)
 
 cor1$r
 cor1$P
+cor1$n
+
+# Extraigo el elemento r de la lista  
 
 DF <- cor1$r
 
@@ -153,38 +158,28 @@ class(DF)  # Matrix
 dim(DF)    # 26 26
 
 colnames(DF) <- c("Bio1","Bio10","Bio11","Bio12","Bio13","Bio14",
-                          "Bio15","Bio16","Bio17","Bio18","Bio19","Bio2", 
-                          "Bio3","Bio4","Bio5","Bio6","Bio7", 
-                          "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
-                          "tmax_mean","tmin_mean","vapor_mean","wind_mean")
-
+                  "Bio15","Bio16","Bio17","Bio18","Bio19","Bio2", 
+                  "Bio3","Bio4","Bio5","Bio6","Bio7", 
+                  "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
+                  "tmax_mean","tmin_mean","vapor_mean","wind_mean")
 
 rownames(DF) <- c("Bio1","Bio10","Bio11","Bio12","Bio13","Bio14",
-                          "Bio15","Bio16","Bio17", "Bio18", "Bio19","Bio2", 
-                          "Bio3","Bio4","Bio5","Bio6","Bio7", 
-                          "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
-                          "tmax_mean","tmin_mean","vapor_mean","wind_mean")
+                  "Bio15","Bio16","Bio17", "Bio18", "Bio19","Bio2", 
+                  "Bio3","Bio4","Bio5","Bio6","Bio7", 
+                  "Bio8","Bio9","prec_mean","solar_rad_mean","tavg_mean", 
+                  "tmax_mean","tmin_mean","vapor_mean","wind_mean")
 DF
 
 class(DF)  # Matrix
 
-install.packages("corrplot")
-library(corrplot)
-
-corr_plot <- corrplot(DF, method = "color", type = "lower", 
+corr_plot_1 <- corrplot(DF, method = "color", type = "lower", 
                       mar = c(0,0,0,0), order = "alphabet", tl.col = "black", tl.cex = 0.5)
 
-install.packages("ggcorrplot")
-library(ggcorrplot)
 
-write.xlsx(cor$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_r_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
-write.xlsx(cor$P, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_P_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(cor1$r, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Matrix_r.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(cor1$P, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Matrix_P.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
-write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix_A.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
-
-
-install.packages("ggcorrplot")
-library(ggcorrplot)
+write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
 # Compute a matrix of correlation p-values
@@ -193,14 +188,14 @@ p.mat <- cor_pmat(DF)
 p.mat
 plot.new()
 
-corr_plot <- ggcorrplot(DF, outline.col = "white", type = "lower", 
+corr_plot_1 <- ggcorrplot(DF, outline.col = "white", type = "lower", 
                         tl.cex = 12, tl.col = "black", tl.srt = 90, 
                         ggtheme = ggplot2::theme_gray, sig.level = 0.05, 
                         insig = "pch", p.mat = p.mat)
 
-corr_plot
+corr_plot_1
 
-corrplot(DF, order = "hclust")
+corr_plot_2 <- corrplot(DF, order = "hclust")
 
 cowplot::save_plot(plot = corr_plot, filename = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Cor_plot.png", type = "cairo", base_height = 8, base_width = 8)
 
@@ -220,14 +215,14 @@ class(DF)
 # correlacion
 # The function fingCorrelation searches through a "correlation matrix" and returns a 
 # vector of integers corresponding to columns to remove to reduce pair-wise correlations.
+# Apply correlation filter at 0.8
 
 highlyCor <- findCorrelation(DF, cutoff = 0.80)
 highlyCor  # 25 24 13 22  1 23 15 18 14 10  2  7 16  5  9 (15 columns to remove)
 length(highlyCor)  # 15
 
 
-# Apply correlation filter at 0.8,
-# Then we remove all the variable correlated with more 0.8.
+# Remove all the variable correlated with more 0.8.
 
 Filtered <- DF[,-highlyCor]
 class(Filtered)
@@ -242,22 +237,8 @@ mat_keep_cols <- c("Bio11","Bio12","Bio14","Bio16","Bio19","Bio2",
 mat_subset <- DF[rownames(DF) %in% mat_keep_rows, colnames(DF) %in% mat_keep_cols]  # Extract rows from matrix
 mat_subset
 
+write.xlsx(mat_subset, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Matrix_subset.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+
 # Ahora, si hiciera un analisis de correlacion sobre esa nueva seleccion de variables
 # no deberia haber variables con correlacion > 0.8.
-
-cor2 = Hmisc::rcorr(mat_subset, type = "spearman")
-
-DF1 <- cor2$r
-
-class(DF1)
-
-corrplot(DF1, order = "hclust", addrect = 2, method = "number", diag = FALSE, type = "lower", mar = c(0,0,0,0))
-
-write.xlsx(DF1, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Corr_matrices/Cor_DF_matrix_C.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
-
-
-
-
-
-
-
