@@ -9,6 +9,7 @@ rm(list=ls(all=TRUE))
 if(!require(devtools)){
   install.packages("devtools")
 }
+
 ´´´
 
 #-------------------------------------------------------------------------------
