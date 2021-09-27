@@ -9,27 +9,34 @@ if(!require(devtools)){
 }
 
 
-setwd("C:/Users/User/Documents/Analyses/Ticks ENM/") 
+#-------------------------------------------------------------------------------
+# Calibration of candidate models
+#-------------------------------------------------------------------------------
 
-help(kuenm_cal)
+# En modelado 3, solar_rad_mean is removed according to results in modelado 2
 
-occ_joint <- "occ_joint.csv"     # Todas las ocurrencias
-occ_tra <- "occ_train.csv"       # Ocurrencias para training set
-M_var_dir <- "M_variables"       # Directorio con variables ambientales
-batch_cal <- "Candidate_Models"  # Creo un objeto "batch_cal" que despues al llamar
-# dentro de kuenm_cal procesa todos los modelos en batch mode
-# y los deposita en el directorio Candidate_Models
+gc()
+rm(list=ls(all=TRUE))
 
-# The folder Candidate_models has two folders or models for each combination
-# of RM, feature and set of variables. Why is that? Because you test pROC 
-# and omission rate using models that are constructed only with
+library(kuenm)
+
+setwd("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Modelado 3")
+
+occ_joint <- "occ_joint.csv"     # All occurrences
+occ_tra <- "occ_train.csv"       # Training set
+M_var_dir <- "Calibration_M"     # Directory containing environmental variables
+batch_cal <- "Candidate_Models"  # Creates objet "batch_cal" which after calling kuenm_cal runs models in batch mode
+# and dumps them into Candidate_Models directory
+
+out_dir <- "Candidate_Models"    # The folder Candidate_Models has two folders or models for each combination
+# of RM, feature and set of variables (here, only one set is used). Why is that? 
+# Because we test pROC and omission rate using models that are constructed only with
 # training data ("_cal"), but you test AICc with models that are created
 # with the complete set of occurrences ("_all").
 
-out_dir <- "Candidate_Models"    
 candir <- "Candidate_models"
-reg_mult <- c(0.25,1)
-f_clas <- c("l","q")
+reg_mult <- c(0.1, 0.25, 0.5, 0.75, 1, 2.5, 5)
+f_clas <- "basic"
 args <- NULL
 mxpath <- "C:/Users/User/Desktop/maxent"
 wait <- FALSE
@@ -39,3 +46,4 @@ kuenm_cal(occ.joint = occ_joint, occ.tra = occ_tra, M.var.dir = M_var_dir,
           batch = batch_cal, out.dir = out_dir, 
           reg.mult = reg_mult, f.clas = f_clas, args = args, 
           maxent.path = mxpath, wait = wait, run = run)
+
