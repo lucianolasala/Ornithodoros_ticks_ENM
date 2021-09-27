@@ -1,5 +1,6 @@
+## Model calibration
 
-# Model calibration
+The following code generates candidate models in Maxent to test multiple parameter combinations, including distinct regularization multiplier values, various feature classes, and different environmental variables in the same set.   
 
 ```r
 devtools::install_github("marlonecobos/kuenm")
@@ -11,10 +12,6 @@ if(!require(devtools)){
 }
 
 ```
-
-#-------------------------------------------------------------------------------
-# Calibration of candidate models
-#-------------------------------------------------------------------------------
 
 # En modelado 3, solar_rad_mean is removed according to results in modelado 2
 
