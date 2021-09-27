@@ -1,7 +1,7 @@
 
 # Model calibration
 
-´´´r
+```r
 devtools::install_github("marlonecobos/kuenm")
 
 rm(list=ls(all=TRUE))
@@ -10,7 +10,7 @@ if(!require(devtools)){
   install.packages("devtools")
 }
 
-´´´
+```
 
 #-------------------------------------------------------------------------------
 # Calibration of candidate models
