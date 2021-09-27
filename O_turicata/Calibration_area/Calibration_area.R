@@ -192,10 +192,6 @@ turicata_df$Ecoregion <- apply(st_intersects(eco_world, turicata_sf, sparse = FA
 
 head(turicata_df)
 
-
-#s2_available = !inherits(try(sf_use_s2(TRUE), silent=TRUE), "try-error")
-#s2_available
-
 #library(s2)
 
 turicata_df
@@ -317,7 +313,9 @@ p
 rm(list=ls(all=TRUE))
 gc()
 
-setwd("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\WorldClim Bioclimatic variables_wc2.1_5m_bio")  # 19 WorldClim variables for whole world
+# Set wd to folder with 19 WorldClim variables for whole world
+
+setwd("C:\\Users\\User\\Documents\\Analyses\\Ticks ENM\\Raster data\\Historial data\\WorldClim Bioclimatic variables_wc2.1_5m_bio")  
 
 files <- list.files(pattern = ".tif$", all.files = TRUE, full.names = TRUE)
 length(files)  # 19
@@ -328,6 +326,7 @@ class(allrasters)  # "RasterStack"
 # Load ecorregions polygon
 
 cal_area <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg")
+plot(cal_area$geom)
 
 # Crop raster stack with 19 variables using the vector
 
@@ -367,15 +366,21 @@ for(i in 1:length(variables)) {
   writeRaster(individual_r[[i]], filename = paste0("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/ASCII/", variables[i]), format = "ascii")
 }
 
-
 # Alternative approach to masking and saving each raster file
 
-outfiles <- file.path("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/Bioclim", 
+outfiles <- file.path("C:/Users/User/Documents/Analyses/Ticks ENM/Raster data/O_turicata/Calibration_historical/Alternativa", 
                       paste0(basename(tools::file_path_sans_ext(files)),
                       "_M.tif"))
 
 for(i in seq_along(files)) {
   r <- mask(raster(files[i]), cal_area)
+  writeRaster(r, filename = outfiles[i], overwrite = TRUE)
+}
+
+
+for(i in seq_along(files)) {
+  cropped <- crop(raster(files[i]), cal_area)
+  r <- mask(cropped, cal_area)
   writeRaster(r, filename = outfiles[i], overwrite = TRUE)
 }
 

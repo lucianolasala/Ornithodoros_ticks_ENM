@@ -39,7 +39,6 @@ mytable1
 
 xlsx::write.xlsx(mytable, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
-
 files2 <- list.files(path = path2, pattern = ".asc$", full.names = TRUE)
 files2
 
