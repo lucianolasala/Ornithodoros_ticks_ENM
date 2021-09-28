@@ -1,5 +1,6 @@
 ## Model Averaging
-This code calculates raster layers with selected descriptive statistics of all model replicates across multiple parameter settings. All of this, discriminating among models transferred to distinct projection areas (scenarios).
+
+The following code calculates raster layers with selected descriptive statistics of all model replicates across multiple parameter settings. All of this, discriminating among models transferred to distinct projection areas (scenarios).
 
 
 ```r
