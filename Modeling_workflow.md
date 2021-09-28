@@ -9,7 +9,8 @@ At the end of Step 2 in Cycle 1, the selected model/s were evaluated. If only on
 Variables were removed from subsequent modeling cycles if the regularized trainign gain did not decrease considerably when excluded during the jackknife process.      
 Cycles  were repeate until no model improvement could be observed.  
 
-Finally, the best model selected through the above cycles was processed as follows:   
+Finally, the best model selected through the above cycles was processed as follows:  
+
 4. Model projection: we used the function *kuenm_mod* with *project* argument set to TRUE, which projects the final model to new environmental scenarios in a different geographic area.   
 5. Evaluation of extrapolation risks: we used the function *kuenm_mop*, which calculates a mobility-oriented parity layer by comparing environmental values between the calibration area and the area or scenario to which an ecological niche model is transferred.  
 6. Model averaging: we used the function *kuenm_modstats* to calculate descriptive statistics of models using model replicates across multiple parameter settings.
