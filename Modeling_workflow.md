@@ -8,7 +8,7 @@ Here, models were built in sequential cycles (i.e., Cycle 1, Cycle 2, etc.), eac
 At the end of Step 2 in Cycle 1, the selected model/s were evaluated. If only one model passed the evaluation criteria, this was the only model evaluated. Alternatively, of more than one model was selected, the one that ranked as best was evaluated. The model was evaluated in terms of analysis of omission / commission, area under the receiver operating characteristic (ROC) curve (AUC), response curves for variables, analysis of variable contributions (percent contribution and permutation importance), and jackknife test of variable importance.
 Variables were removed from subsequent modeling cycles if the regularized trainign gain did not decrease considerably when excluded during the jackknife process.    
 
----
+----  
 After
 
 4. Model projection: we used the function *kuenm_mod* with *project* argument set to TRUE, which projects the final model to new environmental scenarios in a different geographic area.   
