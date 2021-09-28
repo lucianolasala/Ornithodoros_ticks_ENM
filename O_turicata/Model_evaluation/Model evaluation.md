@@ -1,4 +1,5 @@
 ## Model Evaluation
+The following code evaluates candidate models in terms of statistical significance (partial ROC), prediction ability (omission rates), and model complexity (AICc). After evaluation, this function selects the best models based on user-defined criteria.  
 
 ```r
 cresdir <- "Candidate_Models"
