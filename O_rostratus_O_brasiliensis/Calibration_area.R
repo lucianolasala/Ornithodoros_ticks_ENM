@@ -1,5 +1,5 @@
-# Calibration area (M) consist of ecoregions in area of interest where O. turicata
-# has been recorded
+# Calibration area (M) consist of ecoregions in area of interest where O. rostratus and 
+# O. brasiliensis have been recorded
 
 # Load required packages
 
