@@ -2,8 +2,6 @@
 # Correlation analysis for variable selection
 #------------------------------------------------------------------------------------
 
-gc()
-
 rm(list=ls(all=TRUE))
 
 library(tidyverse)
@@ -17,10 +15,9 @@ library(corrplot)
 library(ggcorrplot)
 
 
-path1 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/")
-path2 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/")
+path1 = ("C:/Users/User/Documents/Analyses/AVL/Rasters/ascii_procesadas/")
 
-files1 <- list.files(path = path1, pattern = ".asc$", full.names = TRUE)
+files1 <- list.files(path = path1, pattern = ".tif$", full.names = TRUE)
 files1
 
 #------------------------------------------------------------------------
@@ -29,31 +26,18 @@ files1
 
 mytable1 <- NULL
 
-for(i in 1:26){
+for(i in 1:72){
   r <- raster(files1[i])
   mytable1 <- rbind(mytable1, c(files1[i], round(c(res(r), as.vector(extent(r))), 8)))
 }
 
+# Warning: In showSRID(uprojargs, format = "PROJ", multiline = "NO") :
+# Discarded datum Unknown based on WGS84 ellipsoid in CRS definition
+
 colnames(mytable1) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
 mytable1
 
-xlsx::write.xlsx(mytable, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
-
-files2 <- list.files(path = path2, pattern = ".asc$", full.names = TRUE)
-files2
-
-mytable2 <- NULL
-
-for(i in 1:26){
-  r <- raster(files2[i])
-  mytable2 <- rbind(mytable2, c(files2[i], round(c(res(r), as.vector(extent(r))), 8)))
-}
-
-colnames(mytable2) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
-
-mytable2
-
-xlsx::write.xlsx(mytable2, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_projection.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+xlsx::write.xlsx(mytable1, file = "C:/Users/User/Documents/Analyses/AVL/Rasters/ascii_procesadas/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
 #------------------------------------------------------------------------------------

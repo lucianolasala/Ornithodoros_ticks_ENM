@@ -607,7 +607,7 @@ plot(tmin_mask[[1]])
 
 # Pixel-wise stats for raster brick 
 
-tmin_mean = mean(tmin_mask)
+tmin_mean = min(tmin_mask)
 
 #--------------------------------------------------------------------------------
 # Raster exportation
@@ -659,7 +659,7 @@ plot(tmax_mask[[1]])
 
 # Pixel-wise stats for raster brick 
 
-tmax_mean = mean(tmax_mask)
+tmax_mean = max(tmax_mask)
 
 #--------------------------------------------------------------------------------
 # Raster exportation
