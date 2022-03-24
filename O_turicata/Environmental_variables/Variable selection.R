@@ -2,22 +2,25 @@
 # Correlation analysis for variable selection
 #------------------------------------------------------------------------------------
 
+gc()
+
 rm(list=ls(all=TRUE))
 
-library(tidyverse)
-library(sf)
-library(stars)
-library(magrittr)
-library(raster)
-library(xlsx)
-library(virtualspecies)
-library(corrplot)
-library(ggcorrplot)
+library(tidyverse) # Easily Install and Load the 'Tidyverse'
+library(sf) # Simple Features for R
+library(stars) # Spatiotemporal Arrays, Raster and Vector Data Cubes
+library(magrittr) # A Forward-Pipe Operator for R
+library(raster) # Geographic Data Analysis and Modeling
+library(xlsx) # Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files
+library(virtualspecies) # Generation of Virtual Species Distributions
+library(corrplot) # Visualization of a Correlation Matrix
+library(ggcorrplot) # Visualization of a Correlation Matrix using 'ggplot2'
 
 
-path1 = ("C:/Users/User/Documents/Analyses/AVL/Rasters/ascii_procesadas/")
+path1 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Calibration_M/")
+path2 = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Projection_G/")
 
-files1 <- list.files(path = path1, pattern = ".tif$", full.names = TRUE)
+files1 <- list.files(path = path1, pattern = ".asc$", full.names = TRUE)
 files1
 
 #------------------------------------------------------------------------
@@ -26,18 +29,31 @@ files1
 
 mytable1 <- NULL
 
-for(i in 1:72){
+for(i in 1:26){
   r <- raster(files1[i])
   mytable1 <- rbind(mytable1, c(files1[i], round(c(res(r), as.vector(extent(r))), 8)))
 }
 
-# Warning: In showSRID(uprojargs, format = "PROJ", multiline = "NO") :
-# Discarded datum Unknown based on WGS84 ellipsoid in CRS definition
-
 colnames(mytable1) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
 mytable1
 
-xlsx::write.xlsx(mytable1, file = "C:/Users/User/Documents/Analyses/AVL/Rasters/ascii_procesadas/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+xlsx::write.xlsx(mytable, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_calibration.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+files2 <- list.files(path = path2, pattern = ".asc$", full.names = TRUE)
+files2
+
+mytable2 <- NULL
+
+for(i in 1:26){
+  r <- raster(files2[i])
+  mytable2 <- rbind(mytable2, c(files2[i], round(c(res(r), as.vector(extent(r))), 8)))
+}
+
+colnames(mytable2) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
+
+mytable2
+
+xlsx::write.xlsx(mytable2, file = "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_turicata/Raster_props_projection.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
 #------------------------------------------------------------------------------------
@@ -109,14 +125,14 @@ get.corr <- function(x){
 cr <- get.corr(dt)
 to.remove <- names(sort(table(c(cr$v1,cr$v2)), decreasing = TRUE))
 
-# Extract each variable in turn and the run the flattenCorrMatrix function:
+# Extract each variable in turn and then run the flattenCorrMatrix function:
 
 while(length(to.remove) > 0){
   
   dt <- dt %>%
     dplyr::select(-to.remove[1])
   cr <- get.corr(dt)
-  to.remove <- names(sort(table(c(cr$v1,cr$v2)),decreasing=TRUE))
+  to.remove <- names(sort(table(c(cr$v1,cr$v2)), decreasing=TRUE))
 }
 
 #----------------------------------------------------------------
@@ -189,14 +205,14 @@ cowplot::save_plot(plot = corr_plot, filename = "C:/Users/User/Documents/Analyse
 #-------------------------------------------------------------------------
 
 install.packages("caret")
-library(caret)
+library(caret) # Classification and Regression Training
 
 dim(DF)
 class(DF)
 
 # La matriz DF es la matriz de correlacion anterior que tiene todos los valores de
 # correlacion
-# The function fingCorrelation searches through a "correlation matrix" and returns a 
+# The function findCorrelation searches through a "correlation matrix" and returns a 
 # vector of integers corresponding to columns to remove to reduce pair-wise correlations.
 # Apply correlation filter at 0.8
 
@@ -225,3 +241,4 @@ write.xlsx(mat_subset, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling/O_tu
 
 # Ahora, si hiciera un analisis de correlacion sobre esa nueva seleccion de variables
 # no deberia haber variables con correlacion > 0.8.
+
