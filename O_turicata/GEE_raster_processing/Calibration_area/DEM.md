@@ -1,4 +1,4 @@
-### WorldClim BIO Variables V1
+### SRTM Digital Elevation Data Version 4
 
 Link to product: https://developers.google.com/earth-engine/datasets/catalog/WORLDCLIM_V1_BIO 
 
