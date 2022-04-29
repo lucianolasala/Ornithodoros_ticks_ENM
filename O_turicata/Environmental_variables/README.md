@@ -1,5 +1,6 @@
-# Correlation analysis for variable selection
+## Correlation analysis for variable selection
 
+```r
 rm(list=ls(all=TRUE))
 
 library(tidyverse) # Easily Install and Load the 'Tidyverse'
@@ -10,12 +11,11 @@ library(raster) # Geographic Data Analysis and Modeling
 library(xlsx) # Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files
 library(corrplot) # Visualization of a Correlation Matrix
 library(ggcorrplot) # Visualization of a Correlation Matrix using 'ggplot2'
+```
 
+## Correlation. Uso de funcion cor en stats
 
-#----------------------------------------------------------------
-# Correlation. Uso de funcion cor en stats
-#----------------------------------------------------------------
-
+```r
 path = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii/")
 
 files <- list.files(path = path, pattern = ".asc$", full.names = T)
@@ -52,6 +52,7 @@ dim(cor.matrix)  # 22*22
 
 write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 write.csv(cor.matrix,"C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
+```
 
 # Plotting correlation matrix
 
