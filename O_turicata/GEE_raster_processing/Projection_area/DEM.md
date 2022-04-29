@@ -6,7 +6,7 @@ Link to product: https://developers.google.com/earth-engine/datasets/catalog/WOR
 // Display DEM model
 var DEM = ee.Image('CGIAR/SRTM90_V4')
 .select('elevation')
-.clip(M)
+.clip(G)
 
 print('DEM', DEM.projection().nominalScale())
 print('DEM', DEM)
@@ -15,17 +15,16 @@ print('DEM', DEM)
 var DEMProjection = DEM.projection();
 print('DEM projection:', DEMProjection);
 
-Map.addLayer(M, {}, 'M')
+Map.addLayer(G, {}, 'G')
 Map.addLayer(DEM, {}, 'DEM')
 
 // Create region
-var ExportArea = ee.Geometry.Rectangle([-125,11,-79.5,46]);
+var ExportArea = ee.Geometry.Rectangle([-74,-55,-53,-21]);
 Map.addLayer(ExportArea, {color: 'FF0000'}, 'poly');
-
 
 Export.image.toDrive({
 image: DEM, 
-description: 'DEM_M',
+description: 'DEM_G',
 folder: 'Ticks_ENM',
 crs: 'EPSG:4326', 
 maxPixels: 1e13, 
