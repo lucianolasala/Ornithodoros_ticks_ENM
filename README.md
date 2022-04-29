@@ -30,7 +30,7 @@ Table of Contents
 ### Environmental data
 
 [2. Geospatial data processing](./O_turicata/GEE_raster_processing.md)  
-- [Remote sensing products](./GEE_raster_processing/Data_processing)
+- [Remote sensing products](./O_turicata/GEE_raster_processing/Data_processing)
 
 [3. Environmental variables selection](./O_turicata/Environmental_variables_selection/README.md) 
 
