@@ -24,8 +24,6 @@ paral_proc <- FALSE
 
 kuenm_ceval(path = cresdir, occ.joint = occ_joint, occ.tra = occ_tra, 
             occ.test = occ_test, batch = batch_cal, out.eval = out_eval,
-            threshold = threshold, rand.percent = rand_percent, iterations = iterations,
-            kept = kept, selection = selection, parallel.proc = paral_proc)
-
+            threshold = threshold, rand.percent = rand_percent, iterations             = iterations, kept = kept, selection = selection, parallel.proc = paral_proc)
 ```
 

@@ -54,12 +54,12 @@ write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/
 write.csv(cor.matrix,"C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 ```
 
-# Plotting correlation matrix
+## Plotting correlation matrix
 
+```r
 rm(list=ls(all=TRUE))
 
-install.packages("corrplot")
-library(corrplot)
+
 
 cor.matrix <- read.csv("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 is.matrix(cor.matrix)  # TRUE. La fc corrplot tiene que correr sobre una matriz
