@@ -23,44 +23,32 @@ Table of Contents
 ----------
 *Ornithodoros turicata*
 
-[1. Environmental data](./Modeling_workflow.md)  
+### Modeling workflow
 
-[2. Modeling workflow](./Modeling_workflow.md)
+[1. Modeling workflow](./Modeling_workflow.md)
 
-[3. Environmental variables](./O_turicata/Environmental_variables/README.md) 
+### Environmental data
+
+[2. Geospatial data processing](./GEE_raster_processing/README.md)  
+- [Remote sensing products](./GEE_raster_processing/Data_processing)
+
+[3. Environmental variables selection](./O_turicata/Environmental_variables_selection/README.md) 
+
+### Modelling process
 
 [4. Calibration and projection areas](./Calibration_projection_areas/README.md)
 
-[5. Environmental data processing](./Environmental_data.md)
+[5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
-[6. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
+[6. Model calibration](./Model_calibration/README.md)
 
-[7. Model calibration](./Model_calibration/README.md)
+[7. Model evaluation](./Model_calibration/README.md)
 
-[8. Model evaluation](./Model_calibration/README.md)
+[8. Model projection](./Model_calibration/README.md)
 
-[9. Model projection](./Model_calibration/README.md)
-
-[10. Model validation](./Validation/README.md)
+[9. Model validation](./Validation/README.md)
 
 [9. Suitability maps](./plots)
 
-*Ornithodoros coriaceus*
+*Ornithodoros rostratus*
 
-[1. Environmental variables](./O_turicata/Environmental_variables/README.md) 
-
-[2. Calibration and projection areas](./Calibration_projection_areas/README.md)
-
-[3. Environmental data processing](./Environmental_data.md)
-
-[4. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
-
-[5. Model calibration](./Model_calibration/README.md)
-
-[6. Model evaluation](./Model_calibration/README.md)
-
-[7. Model projection](./Model_calibration/README.md)
-
-[8. Model validation](./Validation/README.md)
-
-[9. Suitability maps](./plots)
