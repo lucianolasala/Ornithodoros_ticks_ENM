@@ -27,7 +27,7 @@ Table of Contents
 
 [1. Modeling workflow](./Modeling_workflow.md)
 
-[2. Geospatial data processing](./GEE_raster_processing/README.md)  
+[2. Geospatial data processing](./O_turicata/GEE_raster_processing/README.md)  
 - [Remote sensing products](./GEE_raster_processing/Data_processing)
 
 [3. Environmental variables selection](./O_turicata/Environmental_variables_selection/README.md) 
