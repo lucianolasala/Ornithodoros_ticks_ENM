@@ -23,23 +23,25 @@ Table of Contents
 ----------
 *Ornithodoros turicata*
 
-[1. Modeling workflow](./Modeling_workflow.md)
+[1. Environmental data](./Modeling_workflow.md)  
 
-[2. Environmental variables](./O_turicata/Environmental_variables/README.md) 
+[2. Modeling workflow](./Modeling_workflow.md)
 
-[3. Calibration and projection areas](./Calibration_projection_areas/README.md)
+[3. Environmental variables](./O_turicata/Environmental_variables/README.md) 
 
-[4. Environmental data processing](./Environmental_data.md)
+[4. Calibration and projection areas](./Calibration_projection_areas/README.md)
 
-[5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
+[5. Environmental data processing](./Environmental_data.md)
 
-[6. Model calibration](./Model_calibration/README.md)
+[6. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
-[7. Model evaluation](./Model_calibration/README.md)
+[7. Model calibration](./Model_calibration/README.md)
 
-[7. Model projection](./Model_calibration/README.md)
+[8. Model evaluation](./Model_calibration/README.md)
 
-[8. Model validation](./Validation/README.md)
+[9. Model projection](./Model_calibration/README.md)
+
+[10. Model validation](./Validation/README.md)
 
 [9. Suitability maps](./plots)
 
