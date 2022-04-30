@@ -1,7 +1,5 @@
 ### SRTM Digital Elevation Data Version 4
 
-Link to product: https://developers.google.com/earth-engine/datasets/catalog/WORLDCLIM_V1_BIO 
-
 ```r
 // Display DEM model
 var DEM = ee.Image('CGIAR/SRTM90_V4')
