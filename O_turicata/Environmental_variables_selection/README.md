@@ -20,36 +20,14 @@ library(ggcorrplot) # Visualization of a Correlation Matrix using 'ggplot2'
 path = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii/")
 
 files <- list.files(path = path, pattern = ".asc$", full.names = T)
-files
 
 mystack <- stack(files)
-class(mystack)
-dim(mystack)
-
-mystack@layers  # 22
-
-k <- which(!is.na(mystack[[1]][]))  # Por que  [] ?
-class(k)
-is.vector(k)
-length(k)  # 4887074
-head(k)
-
-n.samp = length(k)*.2
-n.samp
+k <- which(!is.na(mystack[[1]][]))
+n.samp = length(k)*0.2
 k.samp <- sample(k, size = 20000)
-class(k.samp)
-head(k.samp)
 
 k.final <- raster::extract(mystack, k.samp)
-class(k.final)  # Matrix
-dim(k.final)  # 20000    22
-
-length(which(is.na(k.final)))  # 364
-
 cor.matrix <- cor(k.final, use = "pairwise.complete.obs")  
-
-head(cor.matrix)
-dim(cor.matrix)  # 22*22
 
 write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 write.csv(cor.matrix,"C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
@@ -58,15 +36,11 @@ write.csv(cor.matrix,"C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Ra
 ## Plotting correlation matrix
 
 ```r
-rm(list=ls(all=TRUE))
-
-
-
 cor.matrix <- read.csv("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
-is.matrix(cor.matrix)  # TRUE. La fc corrplot tiene que correr sobre una matriz
 
 corr_plot <- corrplot(cor.matrix, method = "color", type = "lower", 
-                      mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex = 0.5, is.corr = FALSE)
+             mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex =              0.5, is.corr = FALSE)
+```
 
 #-------------------------------------------------------------------------------
 # Function rcorr in Hmisc package
@@ -227,5 +201,3 @@ mat_subset
 
 write.xlsx(mat_subset, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Matrix_subset.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
 
-# Ahora, si hiciera un analisis de correlacion sobre esa nueva seleccion de variables
-# no deberia haber variables con correlacion > 0.8.
