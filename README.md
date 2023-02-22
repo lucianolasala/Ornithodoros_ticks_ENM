@@ -10,7 +10,7 @@
 >* **Nicolás Caruso**, Instituto de Ciencias Biológicas y Biomédicas del Sur (CONICET-UNS), Bahía Blanca, Argentina.
 >* **M. Jimena Marfil**, Facultad de Ciencias Veterinarias, Universidad de Buenos Aires. 
 
-Introduction la concha 
+Introduction 
 ----------  
 This repository contains the R scripts and details of methods employed for the development and transfer of ecological niche models (henceforth ENM) for Ornithodoros sp. ticks in contiguous Argentina and neighboring countries.
 This repository serves as a dynamic document for other parties interested on the ecology of Wild boar and it will be updated as additional data is gathered and new methodological methods are developed. 
