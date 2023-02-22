@@ -1,5 +1,5 @@
 
-## Niche Modeling for *Ornithodoros* spp. Ticks in Argentina.
+## Niche Modeling for *Ornithodoros* spp. Ticks in Argentina. +++
 
 <img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/20196847/121586179-ba0f1880-ca09-11eb-9a69-e4f534fafc6b.jpg">
 
@@ -12,7 +12,7 @@
 
 Introduction 
 ----------  
-This repository contains the R scripts and details of methods employed for the development and transfer of ecological niche models (henceforth ENM) for *Ornithodoros* sp. ticks in contiguous Argentina and neighboring countries.
+This repository contains the R scripts and details of methods employed for the development and transfer of ecological niche models (henceforth ENM) for *Ornithodoros* spp. ticks in contiguous Argentina and neighboring countries.
 This repository serves as a dynamic document for other parties interested on the ecology of Wild boar and it will be updated as additional data is gathered and new methodological methods are developed. 
 The code included in the repository is divided into a series of separate scripts that should be run sequentially.
 
