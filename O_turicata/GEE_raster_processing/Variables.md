@@ -1,7 +1,6 @@
 ### Google Earth Engine: a cloud-computing platform for global-scale earth observation data and analysis
 
-Clould computing using Google Earth Engine (https://earthengine.google.com/) is described for each of the variables included in model calibration and projection.
-For the present work, two different assets (i.e. calibration and projection areas) were defined using vector files (ESRI shapefiles). These areas were defined as M and G, respectively. All the analyses were implemented using the Earth Engine API available in JavaScript. 
+Clould computing using Google Earth Engine (https://earthengine.google.com/) is described for each of the variables included in model calibration and projection. For the present work, two different assets (i.e. calibration and projection areas) were defined using vector files (ESRI shapefiles). All the analyses were implemented using the Earth Engine API available in JavaScript. The entire set of original variables is described, of which after the correlation analysis only a subset remained for the modeling purposes.    
 
 ##### Table 1. Elevation, climate and vegetation variables 
 
@@ -33,7 +32,7 @@ For the present work, two different assets (i.e. calibration and projection area
 |                  |b10              |Mean         |250 m          |1950-2018      | |
 |Water content     |b0               |Mean         |250 m          |1950-2018 |OpenLandMap/SOL/SOL_WATERCONTENT-33KPA_USDA-4B1C_M/v01 |
 |                  |b10              |Mean         |250 m          |1950-2018      | |
-|Soil pH           |b0               |Mean         |250 m          |1950-2018|OpenLandMap/SOL/SOL_PH-H2O_USDA-4C1A2A_M/v02 |
+|Water pH          |b0               |Mean         |250 m          |1950-2018|OpenLandMap/SOL/SOL_PH-H2O_USDA-4C1A2A_M/v02 |
 |                  |b10              |Mean         |250 m          |1950-2018      | | 
 
 ***
