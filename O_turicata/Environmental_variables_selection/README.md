@@ -1,4 +1,5 @@
 ## Correlation analysis for variable selection
+>Loading libraries 
 
 ```r
 rm(list=ls(all=TRUE))
@@ -13,7 +14,7 @@ library(corrplot) # Visualization of a Correlation Matrix
 library(ggcorrplot) # Visualization of a Correlation Matrix using 'ggplot2'
 ```
 
-## Correlation. Uso de funcion cor en stats
+## Correlation analysis
 
 ```r
 path = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii/")
