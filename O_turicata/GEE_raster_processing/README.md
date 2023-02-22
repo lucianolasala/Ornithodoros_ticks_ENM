@@ -29,6 +29,8 @@ Table 2. Soil variables
 |                  |b10              |Mean         |250 m          |1950-2018       | |
 |Clay content      |b0               |Mean         |250 m          |1950-2018       |OpenLandMap/SOL/SOL_CLAY-WFRACTION_USDA-3A1A1A_M/v02 |
 |                  |b10              |Mean         |250 m          |1950-2018       | |
+|Sand content      |b0               |Mean         |250 m          |1950-2018 |OpenLandMap/SOL/SOL_SAND-WFRACTION_USDA-3A1A1A_M/v02 | 
+|Sand content      |b10               |Mean         |250 m          |1950-2018      | |
 
 ***
 <sup>*</sup>GEE (Google Earth Engine) collection snippets provide direct reference to data sources.  
