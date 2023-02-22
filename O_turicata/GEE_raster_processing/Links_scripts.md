@@ -1,5 +1,5 @@
 #### Links to Google Earth Engine scripts
->Access directly and execute the scripts to process variables by selecting the links below.
+> Right-click on the links, access directly and execute the scripts to process variables.
 
 |Variable         |Area          |Link to script in GEE |
 |-----------------|--------------|----------------------|
@@ -9,5 +9,9 @@
 |                 |Projection    |https://code.earthengine.google.com/63e16c57b14ddf600cdb89824982f716 |
 |Global precip.   |Calibration   |https://code.earthengine.google.com/49216196ee9485d0c73cd4f89905e826 |
 |                 |Projection    |https://code.earthengine.google.com/42aeb366c5aec4303101da66861fa085 |
-|Day LST          |Clibration    |https://code.earthengine.google.com/0bb09736a55492d947c1cc97d8e42f51 |
+|Day LST          |Calibration   |https://code.earthengine.google.com/0bb09736a55492d947c1cc97d8e42f51 |
 |                 |Projection    |https://code.earthengine.google.com/d9a976e08c7c33870f0e87c5bbd025e4 |
+|Night LST        |Calibration   |https://code.earthengine.google.com/c2bffde46908f2b97b033f1e8ebd5935 |
+|                 |Projection    |https://code.earthengine.google.com/5529eb09fa4e75be8b1ad98e85d98a38 |
+|Gross prim. prod.|Calibration   |https://code.earthengine.google.com/5e9a10a01274f0f6baad372e9adccbb3 |
+|                 |Projection    |https://code.earthengine.google.com/6729d6b433bbbb8cde3269f2dd7092f0 |
