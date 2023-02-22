@@ -1,6 +1,8 @@
 #### Links to Google Earth Engine scripts
 > Right-click on the links, access directly and execute the scripts to process variables.
 
+##### Table 1. Elevation, climate and vegetation variables
+
 |Variable         |Area          |Link to script in GEE |
 |-----------------|--------------|----------------------|
 |DEM              |Calibration   |https://code.earthengine.google.com/5c5724cd0a06c8446dab1d3385ee45bb |
@@ -15,3 +17,14 @@
 |                 |Projection    |https://code.earthengine.google.com/5529eb09fa4e75be8b1ad98e85d98a38 |
 |Gross prim. prod.|Calibration   |https://code.earthengine.google.com/5e9a10a01274f0f6baad372e9adccbb3 |
 |                 |Projection    |https://code.earthengine.google.com/6729d6b433bbbb8cde3269f2dd7092f0 |
+|Intercept. canopy|Calibration   |https://code.earthengine.google.com/b5250502749cb789672a24cde94cbf07 |
+|                 |Projection    |https://code.earthengine.google.com/3de3c014261541e645af124007c7e394 |
+|Soil transp.     |Calibration   |https://code.earthengine.google.com/84dd9d44b268da7c96a2895a6a6f050f |
+|                 |Projection    |https://code.earthengine.google.com/1167c224c71ad10d0e85f51a8a8a41bd |
+|Vegetation transp.|Calibration  |https://code.earthengine.google.com/3d0136834f7bf6d88bcfc547094cc61e |
+|                 |Projection    |https://code.earthengine.google.com/ded9b31580b2eb4d1e0e04ad7fd0dbbf |
+
+
+##### Table 2. Soil variables
+
+
