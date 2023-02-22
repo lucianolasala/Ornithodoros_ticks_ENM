@@ -3,6 +3,8 @@
 Clould computing using Google Earth Engine (https://earthengine.google.com/) is described for each of the variables included in model calibration and projection.
 For the present work, two different assets (i.e. calibration and projection areas) were defined using vector files (ESRI shapefiles). These areas were defined as M and G, respectively. All the analyses were implemented using the Earth Engine API available in JavaScript. 
 
+Table 1. Elevation, climate and vegetation variables 
+
 |Variable          |Band             |Reducer      |Spatial resol. |Temporal resol. |GEE snippet<sup>*</sup> |   
 |------------------|-----------------|-------------| --------------|--------------- |----------------------- |
 |DEM               |elevation        |NA           |90 m           |NA              |CGIAR/SRTM90_V4         |
@@ -15,6 +17,9 @@ For the present work, two different assets (i.e. calibration and projection area
 |                  |                 |Max.         |1 km           |2000-2021       |MODIS/006/MOD11A1       |
 |Gross prim. prod. |GPP              |Mean         |500 m          |2002-2017       |CAS/IGSNRR/PML/V2       |
 |Intercept. canopy |Ei               |Mean         |500 m          |2002-2017       |CAS/IGSNRR/PML/V2       |
+|Soil transp.      |Es               |Mean         |500 m          |2002-2017       |CAS/IGSNRR/PML/V2       |
+|Vegetation transp.|Ec               |Mean         |500 m          |2002-2017       |CAS/IGSNRR/PML/V2       |
+
 
 ***
 <sup>*</sup>GEE (Google Earth Engine) collection snippets provide direct reference to data sources.  
