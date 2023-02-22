@@ -20,7 +20,8 @@ Table 1. Elevation, climate and vegetation variables
 |Soil transp.      |Es               |Mean         |500 m          |2002-2017       |CAS/IGSNRR/PML/V2       |
 |Vegetation transp.|Ec               |Mean         |500 m          |2002-2017       |CAS/IGSNRR/PML/V2       |
 
-Table 2. Soil variables 
+
+Table 2. Soil variables   
 
 |Variable          |Band             |Reducer      |Spatial resol. |Temporal resol. |GEE snippet<sup>*</sup> |   
 |------------------|-----------------|-------------| --------------|--------------- |----------------------- |
