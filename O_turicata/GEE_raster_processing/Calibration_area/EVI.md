@@ -62,7 +62,7 @@ print("Band scale: ", scale);
 ```
 
 #### Inter-anual aggregation
->* Functions to calculate mean year at month resolution
+> Functions to calculate mean year at month resolution
 Las siguientes lineas de codigo calculan el año medio es decir 
 a partir de la serie temporal de 18 años * 12 meses, genera una serie de 
 1 año con 12 meses. La primer imagen de la coleccion es el promedio de los 18 eneros de toda 
