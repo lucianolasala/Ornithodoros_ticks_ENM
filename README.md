@@ -27,8 +27,8 @@ Table of Contents
 [1. Modeling workflow](./Modeling_workflow.md)
 
 [2. Geospatial data processing](./O_turicata/GEE_raster_processing/README.md)  
-- [Variables](./O_turicata/GEE_raster_processing/Calibration_area)
-- [Links scripts Engine](./O_turicata/GEE_raster_processing/Projection_area)
+- [Variables](./O_turicata/GEE_raster_processing/Variables.md)
+- [Links scripts Engine](./O_turicata/GEE_raster_processing/Links_scripts.md)
 
 [3. Environmental variables selection](./O_turicata/Environmental_variables_selection/README.md) 
 

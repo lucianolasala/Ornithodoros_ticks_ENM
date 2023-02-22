@@ -2,6 +2,7 @@
 >Access directly and execute the scripts to process variables by selecting the links below.
 
 |Variable         |Area          |Link to script in GEE |
+|-----------------|--------------|----------------------|
 |DEM              |Calibration   |https://code.earthengine.google.com/5c5724cd0a06c8446dab1d3385ee45bb |
 |                 |Projection    |https://code.earthengine.google.com/6738eb00dbfbc216416e1c437c870d3e |
 |Vegetation index |Calibration   |https://code.earthengine.google.com/e90038e33e4bfaf1c16f2b08f3a7cdbd |
