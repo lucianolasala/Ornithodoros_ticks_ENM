@@ -37,5 +37,6 @@
 |                 |Projection    |https://code.earthengine.google.com/d157a8f036b3a06a4dba74010e3060a5 |
 |Water content    |Calibration   |https://code.earthengine.google.com/4cbc385e35537ec21a9e7a269482cc12 |
 |                 |Projection    |https://code.earthengine.google.com/79f577f2a3d90d79eb2e16cc43b0d80b |
-|
+|Water pH         |Calibration   |https://code.earthengine.google.com/61627464f4216f01c19b7c6465243436 |
+|                 |Projection    |https://code.earthengine.google.com/b2589e5e35fb0daf1c3b02883b63a309 |
 
