@@ -33,8 +33,9 @@ Table 2. Soil variables
 |                  |b10              |Mean         |250 m          |1950-2018      | |
 |Water content     |b0               |Mean         |250 m          |1950-2018 |OpenLandMap/SOL/SOL_WATERCONTENT-33KPA_USDA-4B1C_M/v01 |
 |                  |b10              |Mean         |250 m          |1950-2018      | |
-
+|Soil pH           |b0               |Mean         |250 m          |1950-2018|OpenLandMap/SOL/SOL_PH-H2O_USDA-4C1A2A_M/v02 |
+|                  |b10              |Mean         |250 m          |1950-2018      | | 
 
 ***
 <sup>*</sup>GEE (Google Earth Engine) collection snippets provide direct reference to data sources.  
-<sup>**</sup>This product was used to derive eight different images corresponding to the percentage of time that the cell was occupied by water (&ge;20%, &ge;30%, &ge;40%, &ge;50%, &ge;60%, &ge;70%, &ge;80%, &ge;90%) (see specific section). 
+ 
