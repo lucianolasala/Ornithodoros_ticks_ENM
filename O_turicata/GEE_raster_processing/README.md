@@ -26,7 +26,9 @@ Table 2. Soil variables
 |Variable          |Band             |Reducer      |Spatial resol. |Temporal resol. |GEE snippet<sup>*</sup> |   
 |------------------|-----------------|-------------| --------------|--------------- |----------------------- |
 |Bulk density      |b0               |Mean         |250 m          |1950-2018      |OpenLandMap/SOL/SOL_BULKDENS-FINEEARTH_USDA-4A1H_M/v02 |
+|                  |b10              |Mean         |250 m          |1950-2018       |
 
+|Clay content      |
 
 ***
 <sup>*</sup>GEE (Google Earth Engine) collection snippets provide direct reference to data sources.  
