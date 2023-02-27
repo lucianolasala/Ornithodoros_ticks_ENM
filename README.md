@@ -30,7 +30,7 @@ Table of Contents
 - [Variables](./O_turicata/GEE_raster_processing/Variables.md)
 - [Links scripts Engine](./O_turicata/GEE_raster_processing/Links_scripts.md)
 
-[3. Environmental variables selection](./O_turicata/Environmental_variables_selection/README.md) 
+[3. Environmental variables selection](./O_turicata/Environmental_variables_selection/Variables_selection.md) 
 
 ### Modelling process
 
