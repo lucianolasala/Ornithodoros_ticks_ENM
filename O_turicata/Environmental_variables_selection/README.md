@@ -2,8 +2,6 @@
 >Loading libraries 
 
 ```r
-rm(list=ls(all=TRUE))
-
 library(tidyverse) # Easily Install and Load the 'Tidyverse'
 library(sf) # Simple Features for R
 library(stars) # Spatiotemporal Arrays, Raster and Vector Data Cubes
@@ -12,6 +10,26 @@ library(raster) # Geographic Data Analysis and Modeling
 library(xlsx) # Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files
 library(corrplot) # Visualization of a Correlation Matrix
 library(ggcorrplot) # Visualization of a Correlation Matrix using 'ggplot2'
+library(openxlsx)
+```
+
+## Check spatial resolution and raster extent of raster layers
+
+```r
+path = ("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii") 
+
+files <- list.files(path = path, pattern = ".asc$", full.names = TRUE)
+mytable <- NULL
+
+for(i in 1:length(files)){
+  r <- raster(files[i])
+  mytable <- rbind(mytable, c(files[i], round(c(res(r), as.vector(extent(r))), 8)))
+}
+
+colnames(mytable) <- c("File","Resol.x","Resol.y","xmin","xmax","ymin","ymax")
+mytable <- as.data.frame(mytable)
+
+write_xlsx(mytable, "D:/Trabajo/Analisis/MNE_garrapata/Rasters/Calibration_ascii_props/Rasters_props.xlsx")
 ```
 
 ## Correlation analysis
@@ -29,7 +47,10 @@ k.samp <- sample(k, size = 20000)
 k.final <- raster::extract(mystack, k.samp)
 cor.matrix <- cor(k.final, use = "pairwise.complete.obs")  
 
+# Write as Excel for our own records
 write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+# Write as csv for later processing
 write.csv(cor.matrix,"C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 ```
 
