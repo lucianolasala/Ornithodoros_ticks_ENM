@@ -1,7 +1,6 @@
 ## Correlation analysis for variable selection
 
 ### Loading libraries 
-
 ```r
 pkgs <- c("tidyverse","sf","stars","magrittr","raster","xlsx","corrplot","ggcorrplot","openxlsx","Hmisc")
 new.pkgs <- pkgs[!(pkgs %in% installed.packages()[,"Package"])]
@@ -10,7 +9,6 @@ lapply(pkgs, require, character.only = TRUE)
 ```
 
 ### Check spatial resolution and raster extent of raster layers
-
 ```r
 path = ("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii") 
 files <- list.files(path = path, pattern = ".asc$", full.names = TRUE)
