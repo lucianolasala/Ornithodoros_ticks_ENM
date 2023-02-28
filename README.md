@@ -40,7 +40,9 @@ Table of Contents
 
 [6. Model calibration, evaluation & projection](./O_turicata/Model_cal_eval_proj/Model_cal_eval_proj.md)
 
-[7. Suitability maps](./plots)
+[7. Extrapolation risk analysis](./O_turicata/Extrapolation_risk/Extrapolation_risk.md)
+
+[8. Suitability maps](./plots)
 
 *Ornithodoros rostratus*
 
