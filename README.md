@@ -40,7 +40,7 @@ Table of Contents
 
 [6. Model calibration](./O_turicata/Model_calibration/Model_calibration.md)
 
-[7. Model evaluation](./Model_calibration/README.md)
+[7. Model evaluation](./O_turicata/Model_evaluation/Model_evaluation.md)
 
 [8. Model projection](./Model_calibration/README.md)
 
