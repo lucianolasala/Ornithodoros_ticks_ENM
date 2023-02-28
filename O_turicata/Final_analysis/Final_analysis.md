@@ -1,4 +1,6 @@
 ### Final analysis
+>The following scrips produce rasters sumarizing model outputs in the clibrarion and 
+projection areas using mean, standard deviation and median.
 
 #### Loading libraries
 ```r
