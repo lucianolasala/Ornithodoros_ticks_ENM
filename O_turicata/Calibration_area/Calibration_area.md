@@ -81,7 +81,7 @@ st_write(unique_eco_map, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data
 turicata_dis <- readOGR("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_ecoregions.gpkg")
 turicata_dissolved <- rgeos::gUnaryUnion(turicata_dis)
 turicata_dissolved_spdf <- as(turicata_dissolved, "SpatialPolygonsDataFrame")
-turicata_sf = st_as_sf(turicata_dissolved)      
+turicata_sf <- st_as_sf(turicata_dissolved)      
 st_write(turicata_sf, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_dissolved.gpkg", driver = "gpkg")
 writeOGR(turicata_dissolved, layer = "turicata_dissolved", "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/Ecoregions/turicata_dissolved.shp", driver = "ESRI Shapefile")
 ```
