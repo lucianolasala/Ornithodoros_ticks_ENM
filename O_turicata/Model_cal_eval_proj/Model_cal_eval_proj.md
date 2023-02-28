@@ -48,6 +48,8 @@ kuenm_ceval(path=cresdir, occ.joint=occ_joint, occ.tra=occ_tra,
 ```
 
 ### Creation of final models with projection
+>The function "kuenm_mod" creates and executes a batch file (bash for Unix) for generating Maxent models using parameters previously selected with the kuenm_ceval function.
+
 ```r
 occ_joint <- "./Occs/occ_joint.csv" 
 batch_fin <- "Final_models"
