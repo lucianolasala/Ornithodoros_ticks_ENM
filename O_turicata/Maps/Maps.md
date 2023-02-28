@@ -39,12 +39,11 @@ p1 <- ggplot() +
         axis.text.x = element_text(colour = "black", size = 16),
         axis.text.y = element_text(colour = "black", size = 16)) +
   theme(legend.position = c(0.9, 0.25)) +
-  theme(legend.key.size = unit(1.5, 'line'), # Change legend key size
-        legend.key.height = unit(1.5, 'line'), # Change legend key height
-        legend.key.width = unit(1, 'line'), # Change legend key width
-        legend.title = element_text(size = 14, face = "bold"), #change legend title font size
-        legend.text = element_text(size = 12)) + # Change legend text font size
-  
+  theme(legend.key.size = unit(1.5, 'line'), 
+        legend.key.height = unit(1.5, 'line'), 
+        legend.key.width = unit(1, 'line'), 
+        legend.title = element_text(size = 14, face = "bold"), 
+        legend.text = element_text(size = 12)) + 
   annotate(geom = "text", x = -105, y = 45, label = "US", color="black", size=7) +
   annotate(geom = "text", x = -102.5, y = 25, label = "MX", color="black", size=7) +
   annotate(geom = "text", x = -87, y = 17, label = "BZ", color="black", size=7) +
@@ -53,9 +52,7 @@ p1 <- ggplot() +
   annotate(geom = "text", x = -86.5, y = 10.5, label = "NI", color="black", size=7) +
   annotate(geom = "text", x = -84.5, y = 17, label = "HN", color="black", size=7) +
   theme(plot.margin = unit(c(0.5,8,-8,8), "pt")) # top, right, bottom, left
-
 p1
-
 ggsave(plot = p1, "D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Maps/Final_O.turicata_cal.png", width = 14, height = 14)
 ```
 
@@ -93,7 +90,6 @@ sa_ctroids2 <- sa_ctroids1 %>% mutate(STATE =
                                                 NAME_1 == "Tierra del Fuego" ~ "V",
                                                 NAME_1 == "Tucumán" ~ "T"))
 
-
 # Conversion to SpatialPointsData and then to dataframe for plotting in two steps
 full_pts <- rasterToPoints(dt2, spatial = TRUE)
 full_df  <- data.frame(full_pts)
@@ -109,21 +105,18 @@ p2 <- ggplot() +
         axis.text.x = element_text(colour = "black", size = 18),
         axis.text.y = element_text(colour = "black", size = 18)) +
   theme(legend.position = c(0.75, 0.20)) +
-  theme(legend.key.size = unit(10, 'line'), # Change legend key size
-        legend.key.height = unit(2.5, 'line'), # Change legend key height
-        legend.key.width = unit(2, 'line'), # Change legend key width
-        legend.title = element_text(size = 18, face = "bold"), #change legend title font size
-        legend.text = element_text(size = 16)) + # Change legend text font size
+  theme(legend.key.size = unit(10, 'line'), 
+        legend.key.height = unit(2.5, 'line'), 
+        legend.key.width = unit(2, 'line'), 
+        legend.title = element_text(size = 18, face = "bold"), 
+        legend.text = element_text(size = 16)) + 
   theme(plot.margin = unit(c(4,0,4,0), "pt")) +
   geom_text(data = sa_ctroids2, aes(X, Y, label = STATE), size = 7,
             family = "sans", fontface = "bold") + 
   annotate("text", label = "A", x = -65.0, y = -25, color = "black", size = 7, fontface = 2)
-  
 p2
-
 ggsave(plot = p2, "D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Ciclo_1/Maps/Final_O.turicata_proj.png", width = 8.3, height = 11.7)
 ```
-
 
 #### Ploting threshold models (maximum training sensitivity plus specificity)
 
@@ -177,18 +170,16 @@ p3 <- ggplot() +
         axis.text.x = element_text(colour = "black", size = 18),
         axis.text.y = element_text(colour = "black", size = 18)) +
   theme(legend.position = c(0.75, 0.15)) +
-  theme(legend.key.size = unit(2, 'line'), # Change legend key size
-        legend.key.height = unit(2, 'line'), # Change legend key height
-        legend.key.width = unit(1.5, 'line'), # Change legend key width
-        legend.title = element_text(size = 16, face = "bold"), #change legend title font size
+  theme(legend.key.size = unit(2, 'line'), 
+        legend.key.height = unit(2, 'line'), 
+        legend.key.width = unit(1.5, 'line'), 
+        legend.title = element_text(size = 16, face = "bold"), 
         legend.text = element_text(size = 14)) + #change legend text font size
   scale_fill_manual(values=c("#ffff66","#ff0066")) + 
   geom_text(data = sa_ctroids2, aes(X, Y, label = STATE), size = 7,
             family = "sans", fontface = "bold") + 
   annotate("text", label = "A", x = -65.0, y = -25, color = "black", size = 7, fontface = 2)
-
 p3
-
 ggsave(plot = p3, "D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Maps/Final_plot_thresh_MSS.png", width = 8.3, height = 11.7)
 ```
 
@@ -240,19 +231,17 @@ p4 <- ggplot() +
         axis.text.x = element_text(colour = "black", size = 18),
         axis.text.y = element_text(colour = "black", size = 18)) +
   theme(legend.position = c(0.75, 0.15)) +
-  theme(legend.key.size = unit(2, 'line'), # Change legend key size
-        legend.key.height = unit(2, 'line'), # Change legend key height
-        legend.key.width = unit(1.5, 'line'), # Change legend key width
-        legend.title = element_text(size = 16, face = "bold"), # Change legend title font size
-        legend.text = element_text(size = 14)) + # Change legend text font size
+  theme(legend.key.size = unit(2, 'line'), 
+        legend.key.height = unit(2, 'line'), 
+        legend.key.width = unit(1.5, 'line'), 
+        legend.title = element_text(size = 16, face = "bold"),
+        legend.text = element_text(size = 14)) + 
         labs(fill = "Extrapolation risk") +
   scale_fill_manual(values=c("#ff0066","#D5DBDB")) +
   geom_text(data = sa_ctroids2, aes(X, Y, label = STATE), size = 7,
             family = "sans", fontface = "bold") + 
   annotate("text", label = "A", x = -65.0, y = -25, color = "black", size = 7, fontface = 2)
-
 p4
-
 ggsave(plot = p4, "D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Ciclo_1/Maps/MOP_binary.png", width = 8.3, height = 11.7)
 ```
 
