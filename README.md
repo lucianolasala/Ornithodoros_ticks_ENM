@@ -34,7 +34,7 @@ Table of Contents
 
 ### Modelling process
 
-[4. Calibration and projection areas](./Calibration_projection_areas/README.md)
+[4. Calibration area](./O_turicata/Calibration_area/Calibration_area.md)
 
 [5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
 
