@@ -38,15 +38,9 @@ Table of Contents
 
 [5. Occurrence data preparation](./O_turicata/Occurrence_data/Occurrence_data.md)
 
-[6. Model calibration](./O_turicata/Model_calibration/Model_calibration.md)
+[6. Model calibration, evaluation & Projection](./O_turicata/Model_cal_eval_proj/Model_cal_eval_proj.md)
 
-[7. Model evaluation](./O_turicata/Model_evaluation/Model_evaluation.md)
-
-[8. Model projection](./Model_calibration/README.md)
-
-[9. Model validation](./Validation/README.md)
-
-[10. Suitability maps](./plots)
+[7. Suitability maps](./plots)
 
 *Ornithodoros rostratus*
 
