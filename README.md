@@ -38,7 +38,7 @@ Table of Contents
 
 [5. Occurrence data preparation](./O_turicata/Occurrence_data/Occurrence_data.md)
 
-[6. Model calibration](./Model_calibration/README.md)
+[6. Model calibration](./O_turicata/Model_calibration/Model_calibration.md)
 
 [7. Model evaluation](./Model_calibration/README.md)
 

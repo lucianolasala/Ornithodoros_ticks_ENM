@@ -1,6 +1,6 @@
-## Model calibration
+### Model calibration
 
-The following code generates candidate models to test multiple parameter combinations, including distinct regularization multiplier values, various feature classes, and different environmental variables in the same set.   
+>The following code generates candidate models to test multiple parameter combinations, including distinct regularization multiplier values, various feature classes, and different environmental variables in the same set.   
 
 ```r
 occ_joint <- "occ_joint.csv"     
