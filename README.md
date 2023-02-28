@@ -35,18 +35,12 @@ Table of Contents
 ### Modelling process
 
 [4. Calibration area](./O_turicata/Calibration_area/Calibration_area.md)
-
-[5. Occurrence data and model calibration](./Occurrence_data_model_calibration.md)
-
+[5. Occurrence data preparation](./Occurrence_data/Occurrence_data.md)
 [6. Model calibration](./Model_calibration/README.md)
-
 [7. Model evaluation](./Model_calibration/README.md)
-
 [8. Model projection](./Model_calibration/README.md)
-
 [9. Model validation](./Validation/README.md)
-
-[9. Suitability maps](./plots)
+[10. Suitability maps](./plots)
 
 *Ornithodoros rostratus*
 
