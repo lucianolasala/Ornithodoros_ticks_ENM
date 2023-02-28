@@ -151,14 +151,13 @@ sa_ctroids2 <- sa_ctroids1 %>% mutate(STATE =
 # Load thresholded model
 dt1 <- raster("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Final_models_rasters/proj_area_mean_thresh_MSS.tif")
 
-
 # Conversion to SpatialPointsData and then to dataframe for plotting in two steps
 full_pts <- rasterToPoints(dt1, spatial = TRUE)
 full_df  <- data.frame(full_pts)
 
 full_bin = full_df %>% mutate(Group =
                               case_when(proj_area_mean_thresh_MSS == 0 ~ "Absence", 
-                                        proj_area_mean_thresh_MSS == 1 ~ "Presence")) 
+                                        proj_area_mean_thresh_MSS == 1 ~ "Presence"))
 
 p3 <- ggplot() +
   geom_raster(data = full_bin, aes(x = x, y = y, fill = Group)) +
