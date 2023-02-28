@@ -25,7 +25,6 @@ write_xlsx(mytable, "D:/Trabajo/Analisis/MNE_garrapata/Rasters/Calibration_ascii
 ```
 
 ### Correlation analysis
-
 ```r
 path = ("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii/")
 
@@ -57,7 +56,6 @@ openxlsx::write.xlsx(DF,"D:/Trabajo/Analisis/MNE_garrapata/Rasters/Calibration_a
 ```
 
 ### Plotting correlation matrix
-
 ```r
 cor.matrix <- read.csv("C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 corr_plot <- corrplot(cor.matrix, method = "color", type = "lower", 
@@ -65,7 +63,6 @@ corr_plot <- corrplot(cor.matrix, method = "color", type = "lower",
 ```
 
 #### Feature selection
-
 ```r
 DF <- read.table("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 
