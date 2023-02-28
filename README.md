@@ -38,7 +38,7 @@ Table of Contents
 
 [5. Occurrence data preparation](./O_turicata/Occurrence_data/Occurrence_data.md)
 
-[6. Model calibration, evaluation & Projection](./O_turicata/Model_cal_eval_proj/Model_cal_eval_proj.md)
+[6. Model calibration, evaluation & projection](./O_turicata/Model_cal_eval_proj/Model_cal_eval_proj.md)
 
 [7. Suitability maps](./plots)
 
