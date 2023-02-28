@@ -42,7 +42,9 @@ Table of Contents
 
 [7. Extrapolation risk analysis](./O_turicata/Extrapolation_risk/Extrapolation_risk.md)
 
-[8. Suitability maps](./plots)
+[8. Final analysis](./O_turicata/Final_analysis/Final_analysis.md)
+
+[9. Suitability maps](./O_turicata/Maps/Maps.md)
 
 *Ornithodoros rostratus*
 

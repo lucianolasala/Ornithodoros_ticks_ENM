@@ -1,27 +1,15 @@
+###Mapping of model results
+
+####Loading libraries
 ```r
+pkgs <- c("tidyverse","sf","stars","paletteer","gridExtra","readr","magrittr","raster)
+new.pkgs <- pkgs[!(pkgs %in% installed.packages()[,"Package"])]
+if(length(new.pkgs)) install.packages(new.pkgs)
+lapply(pkgs, require, character.only = TRUE)
+```
 
-rm(list=ls(all=TRUE))
+#### Mapping ENM on calibration area
 
-library(tidyverse)
-library(stars)
-library(sf)
-library(paletteer)
-library(gridExtra)
-library(readr)
-library(magrittr)
-library(raster)
-
-setwd("D:/LFLS/Analyses/Jabali_ENM/Modelado_7")
-
-
-#---------------------------------------------------------
-# Plot LFLS
-#---------------------------------------------------------
-
-rm(list=ls(all=TRUE))
-ls()
-
-setwd("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata")
 
 # Load cal and proj areas
 
