@@ -20,31 +20,33 @@ A Maximum Entropy approach (https://biodiversityinformatics.amnh.org/open_source
 
 Table of Contents 
 ----------
-*Ornithodoros turicata*
 
-### Modeling workflow
+### General
 
 [1. Modeling workflow](./Modeling_workflow.md)
 
-[2. Geospatial data processing](./O_turicata/GEE_raster_processing/README.md)  
+*Ornithodoros turicata*
+
+[1. Geospatial data processing](./O_turicata/GEE_raster_processing/README.md)  
 - [Variables](./O_turicata/GEE_raster_processing/Variables.md)
 - [Links scripts Engine](./O_turicata/GEE_raster_processing/Links_scripts.md)
 
-[3. Environmental variables selection](./O_turicata/Environmental_variables_selection/Variables_selection.md) 
+[2. Environmental variables selection](./O_turicata/Environmental_variables_selection/Variables_selection.md) 
 
 ### Modelling process
 
-[4. Calibration area](./O_turicata/Calibration_area/Calibration_area.md)
+[3. Calibration area](./O_turicata/Calibration_area/Calibration_area.md)
 
-[5. Occurrence data preparation](./O_turicata/Occurrence_data/Occurrence_data.md)
+[4. Occurrence data preparation](./O_turicata/Occurrence_data/Occurrence_data.md)
 
-[6. Model calibration, evaluation & projection](./O_turicata/Model_cal_eval_proj/Model_cal_eval_proj.md)
+[5. Model calibration, evaluation & projection](./O_turicata/Model_cal_eval_proj/Model_cal_eval_proj.md)
 
-[7. Extrapolation risk analysis](./O_turicata/Extrapolation_risk/Extrapolation_risk.md)
+[6. Extrapolation risk analysis](./O_turicata/Extrapolation_risk/Extrapolation_risk.md)
 
-[8. Final analysis](./O_turicata/Final_analysis/Final_analysis.md)
+[7. Final analysis](./O_turicata/Final_analysis/Final_analysis.md)
 
-[9. Suitability maps](./O_turicata/Maps/Maps.md)
+[8. Suitability maps](./O_turicata/Maps/Maps.md)
 
 *Ornithodoros rostratus*
+
 
