@@ -12,7 +12,7 @@
 
 Introduction 
 ----------  
-This repository contains the R and ... scripts and details of methods employed for the development and transfer of ecological niche models (henceforth ENM) for *Ornithodoros* spp. ticks in contiguous Argentina and neighboring countries.
+This repository contains the R scripts and details of methods employed for the development and transfer of ecological niche models (henceforth ENM) for *Ornithodoros* spp. ticks in contiguous Argentina and neighboring countries.
 This repository serves as a dynamic document for other parties interested on the ecology of Wild boar and it will be updated as additional data is gathered and new methodological methods are developed. 
 The code included in the repository is divided into a series of separate scripts that should be run sequentially.
 
@@ -25,7 +25,7 @@ Table of Contents
 
 [1. Modeling workflow](./Modeling_workflow.md)
 
-*Ornithodoros turicata*
+<ins>*Ornithodoros turicata*</ins>
 
 [1. Geospatial data processing](./O_turicata/GEE_raster_processing/README.md)  
 - [Variables](./O_turicata/GEE_raster_processing/Variables.md)
