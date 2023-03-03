@@ -25,7 +25,7 @@ Table of Contents
 
 [1. Modeling workflow](./Modeling_workflow.md)
 
-####<ins>*Ornithodoros turicata*</ins>
+#### <ins>*Ornithodoros turicata*</ins>
 
 [1. Geospatial data processing](./O_turicata/GEE_raster_processing/README.md)  
 - [Variables](./O_turicata/GEE_raster_processing/Variables.md)
