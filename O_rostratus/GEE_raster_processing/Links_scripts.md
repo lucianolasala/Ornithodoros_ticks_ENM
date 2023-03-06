@@ -4,7 +4,7 @@
 ##### Table 1. Elevation, climate and vegetation variables
 
 |Variable         |Link to script in GEE |
-|-----------------|--------------|----------------------|
+|-----------------|----------------------|
 |DEM              |https://code.earthengine.google.com/5c5724cd0a06c8446dab1d3385ee45bb |
 |Vegetation index |https://code.earthengine.google.com/e90038e33e4bfaf1c16f2b08f3a7cdbd |
 |Global precip.   |https://code.earthengine.google.com/49216196ee9485d0c73cd4f89905e826 |
