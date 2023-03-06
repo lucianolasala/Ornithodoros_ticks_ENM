@@ -5,22 +5,22 @@
 
 |Variable         |Link to script in GEE |
 |-----------------|----------------------|
-|DEM              |https://code.earthengine.google.com/5c5724cd0a06c8446dab1d3385ee45bb |
-|Vegetation index |https://code.earthengine.google.com/e90038e33e4bfaf1c16f2b08f3a7cdbd |
-|Global precip.   |https://code.earthengine.google.com/49216196ee9485d0c73cd4f89905e826 |
-|Day LST          |https://code.earthengine.google.com/0bb09736a55492d947c1cc97d8e42f51 |
-|Night LST        |https://code.earthengine.google.com/c2bffde46908f2b97b033f1e8ebd5935 |
-|Gross prim. prod.|https://code.earthengine.google.com/5e9a10a01274f0f6baad372e9adccbb3 |
-|Intercept. canopy|https://code.earthengine.google.com/b5250502749cb789672a24cde94cbf07 |
-|Soil transp.     |https://code.earthengine.google.com/84dd9d44b268da7c96a2895a6a6f050f |
-|Vegetation transp.|https://code.earthengine.google.com/3d0136834f7bf6d88bcfc547094cc61e |
+|DEM              |https://code.earthengine.google.com/afec7987b6ba26d83a24cf1950d87b75 |
+|Vegetation index |https://code.earthengine.google.com/8ca356465444d1422b20636b8fa6f804 |
+|Global precip.   |https://code.earthengine.google.com/0b899743b73a1d7bbc5fafc3a17ab05d |
+|Day LST          |https://code.earthengine.google.com/2d46ebe076f49692e02d96cb32ff03b8 |
+|Night LST        |https://code.earthengine.google.com/44a52921513d6b372dad42ac6fe8de8f |
+|Gross prim. prod.|https://code.earthengine.google.com/e36d54f7698c0ccf0c7a038fafd89d34 |
+|Intercept. canopy|https://code.earthengine.google.com/610ef566a55cbd8e0f0e17b75ae80378 |
+|Soil transp.     |https://code.earthengine.google.com/99cb97ee9ff855b5c137145ac113f907 |
+|Vegetation transp.|https://code.earthengine.google.com/b030c0b5bfa1f4bd6dcb509fd67c8574 |
 
 ##### Table 2. Soil variables
 
 |Variable         |Link to script in GEE |
 |-----------------|----------------------|
-|Bulk density     |https://code.earthengine.google.com/88c274faaea85e19baeae399764e4639 |
-|Clay content     |https://code.earthengine.google.com/146272b83748bcd6f2ed9a5e99c366df |
-|Sand content     |https://code.earthengine.google.com/7ccd7187302f30d51725c2b41e042e04 |
-|Water content    |https://code.earthengine.google.com/4cbc385e35537ec21a9e7a269482cc12 |
-|Water pH         |https://code.earthengine.google.com/61627464f4216f01c19b7c6465243436 |
+|Bulk density     |https://code.earthengine.google.com/4f59954346d91d1716d1d3f41cd99353 |
+|Clay content     |https://code.earthengine.google.com/64b4d97d00dfbf05d537ee64302aa601 |
+|Sand content     |https://code.earthengine.google.com/f209d4ec73bf6c954050b0d3501e4f35 |
+|Water content    |https://code.earthengine.google.com/65974d5bb5cd25a0f8963416435ac5bc |
+|Water pH         |https://code.earthengine.google.com/40173515c4e4f1cdcbac179f0e373396 |
