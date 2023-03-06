@@ -65,7 +65,7 @@ Table of Contents
 
 [5. Occurrence data preparation](./O_rostratus/Occurrence_data/Occurrence_data.md)
 
-[6. Model calibration, evaluation & final model creation ](./O_rostratus/Model_cal_eval_proj/Model_cal_eval.md)
+[6. Model calibration, evaluation & final model creation ](./O_rostratus/Model_cal_eval_proj/Model_cal_eval_final.md)
 
 [7. Final analysis](./O_rostratus/Final_analysis/Final_analysis.md)
 

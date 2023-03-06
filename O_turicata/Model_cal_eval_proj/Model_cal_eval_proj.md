@@ -61,9 +61,9 @@ args <- NULL
 mxpath <- "C:/Program Files/maxent"
 
 kuenm_mod(occ.joint=occ_joint, M.var.dir=M_var_dir, G.var.dir=G_var_dir, 
-          out.eval=out_eval, batch=batch_fin, rep.n=10, args=args,             
-          rep.type="Bootstrap", jackknife=TRUE, out.dir=moddir, max.memory=1000, 
-          out.format="cloglog", project=TRUE, 
+          out.eval=out_eval, batch=batch_fin, rep.n=10, args=args,            
+          rep.type="Bootstrap", jackknife=TRUE, out.dir=moddir,           
+          max.memory=1000, out.format="cloglog", project=TRUE, 
           write.mess=FALSE, write.clamp=FALSE, 
           maxent.path=mxpath, wait=FALSE, run=TRUE)
 ```
