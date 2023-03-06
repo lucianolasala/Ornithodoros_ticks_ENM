@@ -1,5 +1,5 @@
 ## Calibration area (M) 
->This area consist of ecoregions in area of interest where O. turicata has been recorded.
+>This area consist of ecoregions in area of interest where *O. turicata* has been recorded.
 
 ### Load required packages
 ```r
@@ -34,12 +34,12 @@ library("rgdal")
 library("rgeos")
 ```
 
-#### Loading O. turicata occurrences
+#### Loading *O. turicata* occurrences
 ```r
 Ornithodoros <- read_csv("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/Ornithodoros_DB.csv")  
 
 # Subset and save shp files for O. turicata
-turicata <- filter(Ornithodoros, Especie == "Ornithodoros turicata")
+turicata <- dplyr::filter(Ornithodoros, Especie == "Ornithodoros turicata")
 
 # Create a CRS object to define the CRS of our sf object
 ticks_crs <- st_crs(4326)
@@ -49,7 +49,7 @@ turicata_df <- st_as_sf(turicata, coords = c("Long", "Lat"), crs = ticks_crs)
 st_write(turicata_df, "C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg", driver = "gpkg")
 ```
 
-#### Extracting ecoregions for O. turicata
+#### Extracting ecoregions for *O. turicata*
 ```r
 turicata <- st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
 turicata_df <- as.data.frame(sf::st_coordinates(turicata))  
@@ -76,7 +76,7 @@ unique_eco_map <- eco_world[eco_world$ECO_NAME %in% unique_eco$Ecoregion, ]
 st_write(unique_eco_map, "C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_ecoregions.gpkg", driver = "gpkg")
 ```
 
-#### Disolve ecoregions for O. turicata and save as shapefile and geopackage
+#### Disolve ecoregions for *O. turicata* and save as shapefile and geopackage
 ```r
 turicata_dis <- readOGR("C:/Users/User/Documents/Analyses/Ticks ENM/Vector data/O_turicata_M/turicata_ecoregions.gpkg")
 turicata_dissolved <- rgeos::gUnaryUnion(turicata_dis)
