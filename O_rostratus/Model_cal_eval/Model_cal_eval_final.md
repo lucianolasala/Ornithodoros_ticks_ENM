@@ -47,7 +47,7 @@ kuenm_ceval(path=cresdir, occ.joint=occ_joint, occ.tra=occ_tra,
             parallel.proc=paral_proc)
 ```
 
-### Creation of final models with projection
+### Creation of final models without projection
 >The following code creates and executes a batch file (bash for Unix) for generating Maxent models using parameters previously selected with the kuenm_ceval function.
 
 ```r
@@ -55,15 +55,14 @@ occ_joint <- "./Occs/occ_joint.csv"
 batch_fin <- "Final_models"
 moddir <- "Final_models_with_proj"
 M_var_dir <- "Calibration_M_fixed"
-G_var_dir <- "Projection_G"
 out_eval <- "Best_models"
 args <- NULL
 mxpath <- "C:/Program Files/maxent"
 
 kuenm_mod(occ.joint=occ_joint, M.var.dir=M_var_dir, G.var.dir=G_var_dir, 
-          out.eval=out_eval, batch=batch_fin, rep.n=10, args=args,             
-          rep.type="Bootstrap", jackknife=TRUE, out.dir=moddir, max.memory=1000, 
-          out.format="cloglog", project=TRUE, 
+          out.eval=out_eval, batch=batch_fin, rep.n=10, args=args,
+          rep.type="Bootstrap", jackknife=TRUE, out.dir=moddir, 
+          max.memory=1000, out.format="cloglog", project=FALSE, 
           write.mess=FALSE, write.clamp=FALSE, 
           maxent.path=mxpath, wait=FALSE, run=TRUE)
 ```
