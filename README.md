@@ -1,5 +1,5 @@
 
-## Niche Modeling for *Ornithodoros* spp. Ticks in Argentina. ++
+## Niche Modeling for *Ornithodoros* spp. Ticks in Argentina.
 
 <img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/20196847/121586179-ba0f1880-ca09-11eb-9a69-e4f534fafc6b.jpg">
 
