@@ -53,10 +53,10 @@ Table of Contents
 - [Variables](./O_rostratus/GEE_raster_processing/Variables.md)
 - [Links scripts Engine](./O_rostratus/GEE_raster_processing/Links_scripts.md)
 
-[2. Environmental variables selection]() 
+[2. Environmental variables selection](./O_rostratus/Environmental_variables_selection/Variables_selection.md) 
 
 ### Modelling process
 
-[3. Calibration area](./O_turicata/Calibration_area/Calibration_area.md)
+[3. Calibration area](./O_rostratus/Calibration_area/Calibration_area.md)
 
 ### Modelling process
