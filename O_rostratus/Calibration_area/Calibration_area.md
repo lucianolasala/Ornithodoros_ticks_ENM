@@ -1,4 +1,4 @@
-## Calibration area (M) 
+## Calibration area
 >This area consist of ecoregions in area of interest where *O. rostratus* has been recorded.
 
 ### Load required packages
