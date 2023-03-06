@@ -53,6 +53,6 @@ Table of Contents
 - [Variables](./O_rostratus/GEE_raster_processing/Variables.md)
 - [Links scripts Engine](./O_rostratus/GEE_raster_processing/Links_scripts.md)
 
-[2. Environmental variables selection](./O_rostratus/Environmental_variables_selection/Variables_selection.md) 
+[2. Environmental variables selection]() 
 
 ### Modelling process
