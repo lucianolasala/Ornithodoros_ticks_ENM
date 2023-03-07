@@ -14,23 +14,21 @@ lapply(pkgs, require, character.only = TRUE)
 # Load calibration area raster (mean)
 dt1 <- raster("./Final_models_rasters/cal_area_mean.tif")
 
+# Conversion to SpatialPointsData and then to dataframe for plotting in two steps  
+full_pts <- rasterToPoints(dt1, spatial = TRUE)
+full_df  <- data.frame(full_pts)
+
 # Load occurrences
 occ <- read_delim("D:/LFLS/Analyses/Ticks ENM/Ocurrencias/O_turicata.csv", delim = ",") %>%
   filter(!is.na(Long),
          !is.na(Lat)) %>%
   st_as_sf(coords = c("Long", "Lat"), crs = 4326)
 
-# Load calibration area vectors: ecoregions and countries
-sa <- st_read("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Vectors/O_turicata_M/O_turicata_dissolved.gpkg")
-paises <- st_read("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Vectors/O_turicata_M/paises_turicata.gpkg")
-
-# Conversion to SpatialPointsData and then to dataframe for plotting in two steps  
-full_pts <- rasterToPoints(dt1, spatial = TRUE)
-full_df  <- data.frame(full_pts)
+countries <- st_read("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Vectors/O_turicata_M/paises_turicata.gpkg")
 
 p1 <- ggplot() +
   geom_raster(data = full_df, aes(x = x, y = y, fill = cal_area_mean)) +
-  geom_sf(data = paises, alpha = 0, color = "black", size = 0.5) +
+  geom_sf(data = countries, alpha = 0, color = "black", size = 0.5) +
   coord_sf() +
   scale_fill_paletteer_binned("oompaBase::jetColors", na.value = "transparent", n.breaks = 9) +
   labs(x = "Longitude", y = "Latitude", fill = "Suitability") +
