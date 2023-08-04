@@ -1,10 +1,8 @@
-# Calibration area (M) consist of ecoregions in area of interest where 
-# O. coriaceus has been recorded
+## Calibration area
+>This area consist of ecoregions in area of interest where *O. coriaceus* has been recorded.
 
-# Load required packages
-
-rm(list=ls(all=TRUE))
-
+### Load required packages
+```r
 if(!require(tidyverse)){
   install.packages("tidyverse")
 }
@@ -20,6 +18,7 @@ if(!require(raster)){
 if(!require(udunits2)){
   install.packages("udunits2")
 }
+
 if(!require(rgdal)){
   install.packages("rgdal")
 }
@@ -32,6 +31,7 @@ library("sf")
 library("tidyverse")
 library("raster")
 library("udunits2")
+```
 
 # Set working dir
 
