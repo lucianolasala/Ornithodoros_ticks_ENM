@@ -60,7 +60,7 @@ corr_plot <- corrplot(cor.matrix, method = "color", type = "lower",
              mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex =                 0.5, is.corr = FALSE)
 ```
 
-#### Feature selection
+### Feature selection
 ```r
 DF <- read.table("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 
