@@ -43,11 +43,9 @@ write.xlsx(DF, "C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/
 write.csv(cor.matrix,"C:/Users/User/Documents/Analyses/Ticks ENM/Modeling_RSP/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 
 # Save output matrix as dataframe (Excel) with rows and columns names
-
 DF <- as.data.frame(cor.matrix)
 
 # Add names to columns and rows
-
 files <- list.files(path = path, pattern = ".asc$", full.names = F)
 colnames(DF) <- files.1
 rownames(DF) <- files.1
@@ -66,15 +64,13 @@ corr_plot <- corrplot(cor.matrix, method = "color", type = "lower",
 ```r
 DF <- read.table("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii_props/Cor_matrix.csv")
 
-# DF matrix contains all correlaction values. The function findCorrelation searches through a "correlation matrix" and returns a 
-# vector of integers corresponding to columns to remove to reduce pair-wise correlations.Apply correlation filter at 0.8.
+# DF matrix contains all correlaction values. The function findCorrelation searches through a "correlation matrix" and returns a vector of integers corresponding to columns to remove to reduce pair-wise correlations.Apply correlation filter at 0.8.
 
 DF.mat <- as.matrix(DF)
 highlyCor <- findCorrelation(cor(as.matrix(DF.mat)), cutoff = 0.80)  
 filtered <- DF.mat[,-highlyCor]
 
 # Asign column names
-
 path = ("D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii")
 files <- gsub(".asc$","", list.files(path = path, pattern = ".asc$", full.names = F))
 
@@ -95,7 +91,6 @@ corrplot(mat_subset, method = "color", type = "lower",
                       mar = c(1,1,1,1), order = "alphabet", tl.col = "black", tl.cex = 0.6, is.corr = FALSE)
 
 # Plotting with ggcorplot
-
 png(height=800, width=800, file="D:/LFLS/Analyses/MNE_garrapatas/Modelado_turicata/Rasters/Calibration_ascii_props/Cor_plot_final.png", type = "cairo")
 
 ggcorrplot(mat_subset, method = "square", type = "upper", ggtheme = ggplot2::theme_minimal, title = "",
