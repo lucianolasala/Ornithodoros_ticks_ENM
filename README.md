@@ -45,7 +45,7 @@ Table of Contents
 
 [8. Suitability maps](./O_turicata/Maps/Maps.md)
 
-#### <ins>*Ornithodoros coriaceus*</ins>
+#### <ins>*Ornithodoros coriaceus*</ins> p
 
 [1. Geospatial data processing](./O_rostratus/GEE_raster_processing/README.md)  
 - [Variables](./O_rostratus/GEE_raster_processing/Variables.md)

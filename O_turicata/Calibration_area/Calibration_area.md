@@ -1,7 +1,8 @@
 ## Calibration area 
->This area consist of ecoregions in area of interest where *O. turicata* has been recorded.
+> Calibration area (M) consist of ecoregions in area of interest where *O. turicata* has been recorded.
 
 ### Load required packages
+
 ```r
 if(!require(tidyverse)){
   install.packages("tidyverse")
@@ -51,9 +52,23 @@ st_write(turicata_df, "C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_
 
 #### Extracting ecoregions for *O. turicata*
 ```r
-turicata <- st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
-turicata_df <- as.data.frame(sf::st_coordinates(turicata))  
-colnames(turicata_df) <- c("Long", "Lat")  
+turicata1 <- read_sf("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
+
+class(turicata1)  # Loads as tibble
+head(turicata1)
+colnames(turicata1)
+length(turicata1$Especie)
+
+turicata2 <- st_read("C:/Users/User/Documents/Analyses/Ticks ENM/Ocurrencias/O_turicata.gpkg")
+class(turicata2)  # Loads as sf dataframe
+head(turicata2)
+
+turicata_df <- as.data.frame(sf::st_coordinates(turicata2))  # retrieve coordinates in matrix form
+head(turicata_df)
+
+colnames(turicata_df) <- c("Long", "Lat")  # Name columns Long and Lat
+head(turicata_df)
+length(turicata_df$Long)  
 ```
 
 #### Load ecorregions of the world and select those with occurrences
