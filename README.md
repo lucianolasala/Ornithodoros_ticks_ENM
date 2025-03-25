@@ -85,3 +85,4 @@ Table of Contents
 
 [8. Suitability maps](./O_rostratus/Maps/Maps.md)
 
+#### Spatial interaction
