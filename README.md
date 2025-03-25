@@ -85,4 +85,6 @@ Table of Contents
 
 [8. Suitability maps](./O_rostratus/Maps/Maps.md)
 
-#### Spatial interaction
+### Spatial interaction modeling
+[1. Spatial interaction between wild boar and ticks](./)
+[2. Spatial interaction between wild boar, ticks and pigs farms](./)
